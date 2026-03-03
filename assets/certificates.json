@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-03T04:57:07.263614",
+  "last_updated": "2026-03-03T04:59:37.260144",
   "total_count": 55,
   "categories": {
     "AWS": {
@@ -290,30 +290,6 @@
       "description": "Artificial Intelligence and Machine Learning",
       "count": 11,
       "certificates": [
-        {
-          "title": "AWS ML Engineer Associate 1.1 Collect, Ingest, and Store Data",
-          "provider": "AWS Skill Builder",
-          "filename": "AWSSkillBuilder_AWS ML Engineer Associate 1.1 Collect, Ingest, and Store Data.pdf",
-          "path": "assets/certificates/AI-ML/AWSSkillBuilder_AWS ML Engineer Associate 1.1 Collect, Ingest, and Store Data.pdf",
-          "category": "AI-ML",
-          "completion_date": "2026-02-22"
-        },
-        {
-          "title": "AWS ML Engineer Associate 1.2 Transform Data",
-          "provider": "AWS Skill Builder",
-          "filename": "AWSSkillBuilder_AWS ML Engineer Associate 1.2 Transform Data.pdf",
-          "path": "assets/certificates/AI-ML/AWSSkillBuilder_AWS ML Engineer Associate 1.2 Transform Data.pdf",
-          "category": "AI-ML",
-          "completion_date": "2026-03-01"
-        },
-        {
-          "title": "AWS ML Engineer Associate 1.3 Validate Data and Prepare for Modeling",
-          "provider": "AWS Skill Builder",
-          "filename": "AWS ML Engineer Associate 1.3 Validate Data and Prepare for Modeling.pdf",
-          "path": "assets/certificates/AI-ML/AWS ML Engineer Associate 1.3 Validate Data and Prepare for Modeling.pdf",
-          "category": "AI-ML",
-          "completion_date": "2026-03-03"
-        },
         {
           "title": "Security, Compliance, and Governance for AI Solutions",
           "provider": "AWS Skill Builder",
