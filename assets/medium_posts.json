@@ -2,6 +2,12 @@
   "source": "https://medium.com/@vjmourya",
   "posts": [
     {
+      "title": "The $12,500 AWS Infra Mistake That Starts with One Checkbox",
+      "link": "https://medium.com/@vjmourya/the-12-500-aws-infra-mistake-that-starts-with-one-checkbox-7be86b493838?source=rss-c49948e7594d------2",
+      "date": "2026-03-10T15:54:39",
+      "excerpt": "<p>Cloud storage pricing looks deceptively simple, Store data. Pay per GB. Move on.</p><figure><img alt=\"\" src=\"https://cdn-images-1.medium.com/max/1024/1*Q8wKW47HX9rgDV6ErLidPg.png\" /><figcaption>Cos…"
+    },
+    {
       "title": "The Agentic Prompting Style Most AI Users Never Learn",
       "link": "https://medium.com/@vjmourya/the-agentic-prompting-style-most-ai-users-never-learn-7689ee04caaf?source=rss-c49948e7594d------2",
       "date": "2026-01-15T04:25:56",
@@ -30,12 +36,6 @@
       "link": "https://medium.com/@vjmourya/ai-under-the-hood-what-really-happens-when-you-chat-with-an-ai-model-1e126e542939?source=rss-c49948e7594d------2",
       "date": "2025-09-21T05:41:01",
       "excerpt": "<p>You type a question into an AI chatbot — whether it’s OpenAI’s <strong>GPT</strong>, Anthropic’s <strong>Claude</strong>, Google’s <strong>Gemini</strong>, or Meta’s <strong>LLaMA</strong> — hit se…"
-    },
-    {
-      "title": "The Hidden Container Running in Every Pod (And Why It Matters)",
-      "link": "https://medium.com/@vjmourya/the-hidden-container-running-in-every-pod-and-why-it-matters-dee12a139145?source=rss-c49948e7594d------2",
-      "date": "2025-09-20T17:12:04",
-      "excerpt": "<p>“What the Pod!”</p><p>If you’ve spent even a week in Kubernetes land, you’ve probably heard this line: <em>“A Pod is the smallest deployable unit.”</em></p><p>Sounds simple, right? But that sentenc…"
     }
   ]
 }
