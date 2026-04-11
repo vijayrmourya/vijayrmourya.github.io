@@ -32,16 +32,54 @@
         <div class="section">
           <h2>🚀 Featured Projects</h2>
           <div class="grid projects-list" style="grid-template-columns:1fr">
-            <a href="https://github.com/vijayrmourya/ci-driven-portfolio" target="_blank" class="card">
-              <strong>✨ CI-Driven Portfolio Platform</strong>
+            <a href="https://github.com/vijayrmourya/3-tier-todo-crud-api-on-eks" target="_blank" class="card">
+              <strong>✨ 3-tier-todo-crud-api-on-eks</strong>
               <div class="small" style="margin-top:8px">
-                A fully automated portfolio platform built with static HTML, Python automation scripts, and GitHub Actions. This repository powers my personal site, generating pages and content from YAML configurations and external sources (badges, certifications, blog posts) and deploying via GitHub Pages. Showcases automation, scripting, CI/CD, and platform engineering in a real end-to-end system.
+                Built and deployed a containerized FastAPI todo CRUD backend on AWS EKS, delivering scalable, low-latency API performance with Kubernetes orchestration.
+                Configured ALB Ingress for secure external routing, traffic management, and high-availability load balancing.
+                Used Terraform-based Infrastructure as Code to automate cluster provisioning, app deployment, and environment consistency across releases.
               </div>
               <div class="small" style="margin-top:8px;color:var(--accent)">
-                #HTML #CSS #JavaScript #Python #GitHubActions #GitHubPages
+                #AWS #Kubernetes #Terraform #IaC #EKS #FastAPI #ELB #k8s-elb-controller #ModularInfrastructure
               </div>
             </a>
+            <a href="https://github.com/vijayrmourya/bedrock-model-compare" target="_blank" class="card">
+              <strong>✨ bedrock-model-compare</strong>
+              <div class="small" style="margin-top:8px">
+                Interactive CLI that benchmarks Amazon Bedrock foundation models side-by-side — latency, token usage, and cost — in a single run. Send the same prompt to any combination of models across Amazon, Anthropic, Meta, Mistral, Google, NVIDIA, DeepSeek, Qwen, and more. Results are saved as a timestamped Markdown report sorted cheapest-first. Perfect for cost-conscious prompt engineering, model selection, and performance monitoring as new models and updates are released.
+              </div>
+              <div class="small" style="margin-top:8px;color:var(--accent)">
+                #AWS #model-benchmarking #cost-optimization #ai-tool #Python #boto3 #Utilities #SDK #Bedrock #library
+              </div>
+            </a>
+            <a href="https://github.com/vijayrmourya/bedrock-tui-components" target="_blank" class="card">
+              <strong>✨ bedrock-tui-components</strong>
+              <div class="small" style="margin-top:8px">
+                Shared terminal UI components and Bedrock model data for Python CLI tools — one pricing table, one model catalogue cache, one interactive params wizard, one model picker. Install once, use everywhere. This package is the single source of truth for all Bedrock-related terminal tooling in this repo. Both bedrock-model-compare and stream-cli depend on it. Add it to any future Bedrock CLI project and get the full model catalogue, pricing, and interactive prompts for free.
+              </div>
+              <div class="small" style="margin-top:8px;color:var(--accent)">
+                #AWS #ai-tool #Python #boto3 #Utilities #SDK #Bedrock #library
+              </div>
+            </a>
+            <a href="https://github.com/vijayrmourya/boto3-helpers" target="_blank" class="card">
+              <strong>✨ boto3-helpers</strong>
+              <div class="small" style="margin-top:8px">
+                Reusable AWS SDK utilities for any Python project — eliminates repetitive boto3.client() calls, centralises region and credential resolution, caches clients at process scope, and provides idiomatic thin wrappers for Bedrock's control-plane and runtime APIs. Install once as an editable sibling package and every project in the repo gets consistent boto3 behaviour, a single mock-injection point for tests, and free connection reuse on warm Lambda invocations.
+              </div>
+              <div class="small" style="margin-top:8px;color:var(--accent)">
+                #AWS #Python #boto3 #Utilities #SDK #Bedrock #library
+              </div>
+            </a>
+            <a href="https://github.com/vijayrmourya/multi-stack-cloudformation-tf-iac-module" target="_blank" class="card">
+              <strong>✨ multi-stack-cloudformation-tf-iac-module</strong>
+              <div class="small" style="margin-top:8px">
+                A structured AWS infrastructure-as-code reference that demonstrates a hybrid provisioning pattern: Terraform as the orchestration layer driving CloudFormation stacks for core AWS resources. It encapsulates reusable templates for VPC setups, subnet segmentation, compute and storage services, and IAM roles with clean separation of concerns and modular design. This pattern supports production-aligned architecture and clear resource ownership across teams, enabling scalable, maintainable cloud deployments.
 
+              </div>
+              <div class="small" style="margin-top:8px;color:var(--accent)">
+                #AWS #Kubernetes #Terraform #IaC #EKS #ELB #k8s-elb-controller #ModularInfrastructure
+              </div>
+            </a>
             <a href="https://github.com/vijayrmourya/multi-stack-cloudformation-tf-iac-module" target="_blank" class="card">
               <strong>✨ multi-stack-cloudformation-tf-iac-module</strong>
               <div class="small" style="margin-top:8px">
@@ -51,18 +89,17 @@
                 #AWS #CloudFormation #Terraform #IaC #VPC #EC2 #S3 #ModularInfrastructure
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/eks-hosted-web-app-with-alb-ingress" target="_blank" class="card">
-              <strong>✨ eks-hosted-web-app-with-alb-ingress</strong>
+            <a href="https://github.com/vijayrmourya/ci-driven-portfolio" target="_blank" class="card">
+              <strong>✨ CI-Driven Portfolio Platform</strong>
               <div class="small" style="margin-top:8px">
-                Built and deployed a containerized web application on AWS EKS using Kubernetes for scalable and reliable infrastructure.\
-                Configured ALB Ingress to manage external traffic with efficient routing and load balancing.
-                Applied Infrastructure as Code principles to streamline deployment and ensure consistency across environments.
-
+                A fully automated portfolio platform built with static HTML, Python automation scripts, and GitHub Actions. This repository powers my personal site, generating pages and content from YAML configurations and external sources (badges, certifications, blog posts) and deploying via GitHub Pages. Showcases automation, scripting, CI/CD, and platform engineering in a real end-to-end system.
               </div>
               <div class="small" style="margin-top:8px;color:var(--accent)">
-                #AWS #Kubernetes #Terraform #IaC #EKS #ELB #k8s-elb-controller #ModularInfrastructure
+                #HTML #CSS #JavaScript #Python #GitHubActions #GitHubPages
               </div>
             </a>
+          </div>
+        </div>
       </section>
 
       <footer class="footer">
