@@ -12,8 +12,8 @@ a:hover{color:var(--accent-light)}
 .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-subtle)}
 .brand{display:flex;align-items:center;gap:12px;transition:transform 0.2s ease}
 .brand:hover{transform:translateY(-2px)}
-.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4fd1c5);display:flex;align-items:center;justify-content:center;color:#04202b;font-weight:700;font-size:20px;box-shadow:0 4px 12px rgba(96,165,250,0.3);transition:all 0.3s ease}
-.logo:hover{box-shadow:0 6px 20px rgba(96,165,250,0.5);transform:scale(1.05)}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4fd1c5);object-fit:cover;border:2px solid rgba(255,255,255,0.1);box-shadow:0 4px 12px rgba(96,165,250,0.3);transition:all 0.3s ease;cursor:pointer}
+.logo:hover{box-shadow:0 6px 20px rgba(96,165,250,0.5);transform:scale(1.05);border-color:var(--accent)}
 .title{font-size:1.15rem;font-weight:700;background:linear-gradient(90deg,#fff,#cfe8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav{display:flex;gap:8px;align-items:center}
 .nav a{padding:10px 16px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;transition:all 0.2s ease;position:relative}
