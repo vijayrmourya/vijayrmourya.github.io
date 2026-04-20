@@ -88,11 +88,11 @@ certifications:
   - title: "Architecting with Google Kubernetes Engine"
     provider: "Coursera (Google Cloud Training)"
     category: "Credentials"
-    badge_image: "Coursera.png"
-    verification_url: https://www.coursera.org/account/accomplishments/specialization/certificate/JC2QIJQS5B7F
+    badge_image: "Google Kubernetes Engine.png"
+    verification_url: https://coursera.org/share/c05fe218635b0ed566ade2b0ce090947
     issue_date: '2025-07-10'
     expiry_date: ''
-    credential_id: 'JC2QIJQS5B7F'
+    credential_id: 'c05fe218635b0ed566ade2b0ce090947'
     description: Click to Verify
 
 # Category Configuration
