@@ -2,6 +2,12 @@
   "source": "https://medium.com/@vjmourya",
   "posts": [
     {
+      "title": "“AI-Accelerated Development” is Just a Cute Name for Not Knowing What You’re Doing",
+      "link": "https://medium.com/@vjmourya/ai-accelerated-development-is-just-a-cute-name-for-not-knowing-what-youre-doing-9cf63f8d4447?source=rss-c49948e7594d------2",
+      "date": "2026-05-02T06:32:44",
+      "excerpt": "Calling Yourself an “AIOps Engineer” Because You Wrapped an API is Like Claiming Michelin Status for Microwaving a Hot Pocket. Panicking Engineer Recently, I..."
+    },
+    {
       "title": "The $12,500 AWS Infra Mistake That Starts with One Checkbox",
       "link": "https://medium.com/@vjmourya/the-12-500-aws-infra-mistake-that-starts-with-one-checkbox-7be86b493838?source=rss-c49948e7594d------2",
       "date": "2026-03-10T15:54:39",
@@ -30,12 +36,6 @@
       "link": "https://medium.com/@vjmourya/emotions-in-the-ai-how-your-prompts-shape-its-personality-f6168a7f985a?source=rss-c49948e7594d------2",
       "date": "2025-09-27T10:00:58",
       "excerpt": "AI girlfriends are everywhere. From viral TikTok clips of people confessing their “relationships” with chatbots, to apps promising the perfect..."
-    },
-    {
-      "title": "AI Under the Hood: What Really Happens When You Chat with an AI Model",
-      "link": "https://medium.com/@vjmourya/ai-under-the-hood-what-really-happens-when-you-chat-with-an-ai-model-1e126e542939?source=rss-c49948e7594d------2",
-      "date": "2025-09-21T05:41:01",
-      "excerpt": "You type a question into an AI chatbot — whether it’s OpenAI’s GPT , Anthropic’s Claude , Google’s Gemini , or Meta’s LLaMA — hit send, and suddenly a digital..."
     }
   ]
 }
