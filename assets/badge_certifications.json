@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-04T22:30:29.730447",
+  "last_updated": "2026-05-04T17:06:17.230192",
   "total_count": 9,
   "categories": {
     "Credentials": {
@@ -45,7 +45,7 @@
           "verification_url": "https://www.credly.com/badges/a5e55cbd-27d5-4f70-85d1-6892472e7c43/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certified Badges",
+          "cert_type": "Certificates",
           "issue_date": "2025-11-20",
           "credential_id": "a5e55cbd-27d5-4f70-85d1-6892472e7c43",
           "description": "Click to Verify"
@@ -96,7 +96,7 @@
           "verification_url": "https://www.credly.com/badges/3b65e823-a928-418e-ae24-aa29dd5eac78/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
+          "cert_type": "Certified Badges",
           "issue_date": "2024-01-21",
           "credential_id": "3b65e823-a928-418e-ae24-aa29dd5eac78",
           "description": "Click to Verify"
@@ -109,7 +109,7 @@
           "verification_url": "https://www.credly.com/badges/252bcb4c-f476-4e3b-9701-0f95f4243302/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
+          "cert_type": "Certified Badges",
           "issue_date": "2024-01-21",
           "credential_id": "252bcb4c-f476-4e3b-9701-0f95f4243302",
           "description": "Click to Verify"
