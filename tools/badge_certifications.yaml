@@ -17,7 +17,6 @@ certifications:
   - title: "Architecting with Google Kubernetes Engine Specialization"
     provider: "Specialization - Google Cloud via Coursera"
     category: "Credentials"
-    cert_type: "Certificates"
     badge_image: "architecting-with-google-kubernetes-engine-specialization.png"
     verification_url: https://coursera.org/share/6ed6448821334f976f01e977b267f5ba
     issue_date: '2025-07-10'
@@ -27,7 +26,6 @@ certifications:
   - title: "Well-Architected Proficient"
     provider: "Amazon Web Services"
     category: "Credentials"
-    cert_type: "Certified Badges"
     badge_image: "well-architected-proficient.png"
     verification_url: https://www.credly.com/badges/e5218185-f8ad-41e7-8a69-897bc91d189e/public_url
     issue_date: '2025-11-09'
@@ -37,7 +35,6 @@ certifications:
   - title: "Python for Data Science and AI"
     provider: "Authorized by IBM via Coursera"
     category: "Credentials"
-    cert_type: "Certificates"
     badge_image: "python-for-data-science-and-ai.png"
     verification_url: https://www.credly.com/badges/23c82168-0ce3-4c3b-b827-edb7a8b4837d/public_url
     issue_date: '2025-12-22'
@@ -47,7 +44,6 @@ certifications:
   - title: "Introduction to Cloud Computing"
     provider: "Authorized by IBM via Coursera"
     category: "Credentials"
-    cert_type: "Certified Badges"
     badge_image: "introduction-to-cloud-computing.png"
     verification_url: https://www.credly.com/badges/3b65e823-a928-418e-ae24-aa29dd5eac78/public_url
     issue_date: '2024-01-21'
@@ -57,7 +53,6 @@ certifications:
   - title: "DevOps Essentials"
     provider: "Authorized by IBM via Coursera"
     category: "Credentials"
-    cert_type: "Certified Badges"
     badge_image: "devops-essentials.2.png"
     verification_url: https://www.credly.com/badges/252bcb4c-f476-4e3b-9701-0f95f4243302/public_url
     issue_date: '2024-01-21'
@@ -67,7 +62,6 @@ certifications:
   - title: "CKA: Certified Kubernetes Administrator"
     provider: "The Linux Foundation"
     category: "Credentials"
-    cert_type: "Certificates"
     badge_image: "cka-certified-kubernetes-administrator.png"
     verification_url: https://www.credly.com/badges/b6a26557-ea84-4697-b7fe-db7e87a7da58/public_url
     issue_date: '2026-02-05'
@@ -77,7 +71,6 @@ certifications:
   - title: "Amazon EKS - Training Badge"
     provider: "Amazon Web Services Training and Certification"
     category: "Credentials"
-    cert_type: "Certified Badges"
     badge_image: "aws-knowledge-amazon-eks-training-badge.png"
     verification_url: https://www.credly.com/badges/882c41e2-0d80-408c-b61f-5a1addd1c081/public_url
     issue_date: '2025-11-10'
@@ -87,7 +80,6 @@ certifications:
   - title: "Generative AI Practitioner - Training Badge"
     provider: "Amazon Web Services Training and Certification"
     category: "Credentials"
-    cert_type: "Certificates"
     badge_image: "aws-cloud-quest-generative-ai-practitioner-training.png"
     verification_url: https://www.credly.com/badges/a5e55cbd-27d5-4f70-85d1-6892472e7c43/public_url
     issue_date: '2025-11-20'
@@ -97,7 +89,6 @@ certifications:
   - title: "AWS Certified Solutions Architect – Associate"
     provider: "Amazon Web Services Training and Certification"
     category: "Credentials"
-    cert_type: "Certificates"
     badge_image: "aws-certified-solutions-architect-associate.png"
     verification_url: https://www.credly.com/badges/7c3c315a-8119-4aff-969a-c2758e371c2b/public_url
     issue_date: '2022-08-29'
@@ -113,4 +104,3 @@ categories:
     color: '#FF9900'
     description: Professional certifications and badges from AWS, Coursera, and other platforms
     sort_order: 1
-
