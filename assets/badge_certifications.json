@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-04T17:06:17.230192",
+  "last_updated": "2026-05-04T17:22:12.053566",
   "total_count": 9,
   "categories": {
     "Credentials": {
@@ -18,7 +18,6 @@
           "verification_url": "https://www.credly.com/badges/b6a26557-ea84-4697-b7fe-db7e87a7da58/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
           "issue_date": "2026-02-05",
           "expiry_date": "2028-02-05",
           "credential_id": "b6a26557-ea84-4697-b7fe-db7e87a7da58",
@@ -32,7 +31,6 @@
           "verification_url": "https://www.credly.com/badges/23c82168-0ce3-4c3b-b827-edb7a8b4837d/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
           "issue_date": "2025-12-22",
           "credential_id": "23c82168-0ce3-4c3b-b827-edb7a8b4837d",
           "description": "Click to Verify"
@@ -45,7 +43,6 @@
           "verification_url": "https://www.credly.com/badges/a5e55cbd-27d5-4f70-85d1-6892472e7c43/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
           "issue_date": "2025-11-20",
           "credential_id": "a5e55cbd-27d5-4f70-85d1-6892472e7c43",
           "description": "Click to Verify"
@@ -58,7 +55,6 @@
           "verification_url": "https://www.credly.com/badges/882c41e2-0d80-408c-b61f-5a1addd1c081/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certified Badges",
           "issue_date": "2025-11-10",
           "credential_id": "882c41e2-0d80-408c-b61f-5a1addd1c081",
           "description": "Click to Verify"
@@ -71,7 +67,6 @@
           "verification_url": "https://www.credly.com/badges/e5218185-f8ad-41e7-8a69-897bc91d189e/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#232f3e' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='#ff9900' text-anchor='middle'%3EAWS%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certified Badges",
           "issue_date": "2025-11-09",
           "credential_id": "e5218185-f8ad-41e7-8a69-897bc91d189e",
           "description": "Click to Verify"
@@ -84,7 +79,6 @@
           "verification_url": "https://coursera.org/share/6ed6448821334f976f01e977b267f5ba",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
           "issue_date": "2025-07-10",
           "description": "Click to Verify"
         },
@@ -96,7 +90,6 @@
           "verification_url": "https://www.credly.com/badges/3b65e823-a928-418e-ae24-aa29dd5eac78/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certified Badges",
           "issue_date": "2024-01-21",
           "credential_id": "3b65e823-a928-418e-ae24-aa29dd5eac78",
           "description": "Click to Verify"
@@ -109,7 +102,6 @@
           "verification_url": "https://www.credly.com/badges/252bcb4c-f476-4e3b-9701-0f95f4243302/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certified Badges",
           "issue_date": "2024-01-21",
           "credential_id": "252bcb4c-f476-4e3b-9701-0f95f4243302",
           "description": "Click to Verify"
@@ -122,7 +114,6 @@
           "verification_url": "https://www.credly.com/badges/7c3c315a-8119-4aff-969a-c2758e371c2b/public_url",
           "fallback_svg": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect fill='#4A90E2' width='140' height='140' rx='10'/%3E%3Ctext x='70' y='75' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3ECERT%3C/text%3E%3C/svg%3E",
           "category": "Credentials",
-          "cert_type": "Certificates",
           "issue_date": "2022-08-29",
           "expiry_date": "2025-08-29",
           "credential_id": "7c3c315a-8119-4aff-969a-c2758e371c2b",
