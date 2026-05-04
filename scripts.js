@@ -126,10 +126,11 @@ function renderCertificatesSummary() {
 
 // Load and render badge certifications
 function renderBadgeCertifications() {
-  const credentialsContainer = document.getElementById('credentials-certifications-grid');
+  const certsGrid = document.getElementById('credentials-certificates-grid');
+  const badgesGrid = document.getElementById('credentials-badges-grid');
 
-  // If container doesn't exist, exit early
-  if (!credentialsContainer) return;
+  // If containers don't exist, exit early
+  if (!certsGrid && !badgesGrid) return;
 
   fetch('assets/badge_certifications.json')
     .then(r => r.ok ? r.json() : Promise.reject('no json'))
@@ -152,59 +153,53 @@ function renderBadgeCertifications() {
         return dateB - dateA;
       });
 
-      // Render grouped certifications
-      const types = ['Certificates', 'Certified Badges'];
-      let html = '';
-      
-      types.forEach((type, index) => {
-        const typeCerts = allCertifications.filter(c => (c.cert_type || 'Certified Badges') === type);
-        
-        if (typeCerts.length > 0) {
-          html += `<h3 style="margin-top:24px; margin-bottom:16px;">1.${index + 1} ${type}</h3>`;
-          html += `<div class="badges-grid">`;
-          
-          html += typeCerts.map(cert => {
-            const hasVerification = cert.verification_url && !cert.verification_url.includes('YOUR-');
-            const expiryWarning = cert.expiry_date && new Date(cert.expiry_date) < new Date() ?
-              '<div class="small" style="color:#EF4444;margin-top:4px">⚠️ Expired</div>' : '';
+      // Split into types
+      const certificates = allCertifications.filter(c => (c.cert_type || 'Certified Badges') === 'Certificates');
+      const certifiedBadges = allCertifications.filter(c => (c.cert_type || 'Certified Badges') === 'Certified Badges');
 
-            const content = `
-              <div class="badge">
-                <img src="${cert.badge_path}"
-                     alt="${cert.title}"
-                     onerror="this.src='${cert.fallback_svg}'">
-                <div class="issuer" style="margin-top:8px">
-                  <strong style="display:block;margin-bottom:4px;color:#e6eef8">${cert.title}</strong>
-                  <span style="color:var(--muted)">${cert.provider}</span>
-                  ${cert.issue_date ? `<div class="small" style="margin-top:4px;color:var(--muted)">Issued: ${new Date(cert.issue_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'})}</div>` : ''}
-                  ${cert.expiry_date ? `<div class="small" style="color:var(--muted)">Expires: ${new Date(cert.expiry_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'})}</div>` : ''}
-                  ${expiryWarning}
-                  ${cert.description ? `<div class="small" style="margin-top:8px;color:var(--muted);font-style:italic">${cert.description}</div>` : ''}
-                </div>
-              </div>
-            `;
-
-            if (hasVerification) {
-              return `<a href="${cert.verification_url}" target="_blank" rel="noopener" style="text-decoration:none">${content}</a>`;
-            } else {
-              return content;
-            }
-          }).join('');
-          
-          html += `</div>`;
+      // Helper function to render a list of certs to HTML
+      const renderCerts = (certs) => {
+        if (certs.length === 0) {
+          return '<div class="small" style="color:var(--muted);padding:20px;text-align:center;grid-column:1/-1;">No credentials available</div>';
         }
-      });
+        
+        return certs.map(cert => {
+          const hasVerification = cert.verification_url && !cert.verification_url.includes('YOUR-');
+          const expiryWarning = cert.expiry_date && new Date(cert.expiry_date) < new Date() ?
+            '<div class="small" style="color:#EF4444;margin-top:4px">⚠️ Expired</div>' : '';
 
-      credentialsContainer.innerHTML = html;
+          const content = `
+            <div class="badge">
+              <img src="${cert.badge_path}"
+                   alt="${cert.title}"
+                   onerror="this.src='${cert.fallback_svg}'">
+              <div class="issuer" style="margin-top:8px">
+                <strong style="display:block;margin-bottom:4px;color:#e6eef8">${cert.title}</strong>
+                <span style="color:var(--muted)">${cert.provider}</span>
+                ${cert.issue_date ? `<div class="small" style="margin-top:4px;color:var(--muted)">Issued: ${new Date(cert.issue_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'})}</div>` : ''}
+                ${cert.expiry_date ? `<div class="small" style="color:var(--muted)">Expires: ${new Date(cert.expiry_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'})}</div>` : ''}
+                ${expiryWarning}
+                ${cert.description ? `<div class="small" style="margin-top:8px;color:var(--muted);font-style:italic">${cert.description}</div>` : ''}
+              </div>
+            </div>
+          `;
 
-      // If no certifications, show placeholder
-      if (allCertifications.length === 0) {
-        credentialsContainer.innerHTML = '<div class="small" style="color:var(--muted);padding:20px;text-align:center">Configure your certifications in tools/badge_certifications.yaml</div>';
-      }
+          if (hasVerification) {
+            return `<a href="${cert.verification_url}" target="_blank" rel="noopener" style="text-decoration:none">${content}</a>`;
+          } else {
+            return content;
+          }
+        }).join('');
+      };
+
+      if (certsGrid) certsGrid.innerHTML = renderCerts(certificates);
+      if (badgesGrid) badgesGrid.innerHTML = renderCerts(certifiedBadges);
     })
     .catch(err => {
       console.warn('badge certifications load failed', err);
-      credentialsContainer.innerHTML = '<div class="small" style="color:var(--muted);padding:20px;text-align:center">Configure your certifications in tools/badge_certifications.yaml</div>';
+      const errMsg = '<div class="small" style="color:var(--muted);padding:20px;text-align:center;grid-column:1/-1;">Configure your certifications in tools/badge_certifications.yaml</div>';
+      if (certsGrid) certsGrid.innerHTML = errMsg;
+      if (badgesGrid) badgesGrid.innerHTML = errMsg;
     });
 }
 
