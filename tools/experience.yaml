@@ -21,7 +21,7 @@ experiences:
         highlights:
           - "Multi-Cloud Architecture: Lead the team’s expansion from AWS to a multi-cloud environment (GCP and Azure), architecting a hardened OS Image pipeline supporting 500+ AWS accounts and 200+ GCP/Azure accounts"
           - "Infrastructure Deliverables: Engineered automation to support 5 distinct Operating Systems and 20 variants tailored for Base, EKS, ECS, GKE, Deep Learning, and Parallel Clusters etc."
-          - "Orchestration & Scaling: Deployed EKS and GKE-based GitLab runners with strict tenant isolation, supporting complex KEDA workflows and scheduled jobs as the core of CI for 5 tenants with 1000+ jobs."
+          - "CI/CD Orchestration: Deployed tenant-isolated GitLab runners on EKS and GKE; which currently supports over 1,000 weekly GitLab jobs across 5 separate tenant teams."
           - "Serverless Governance: Architected a centralized AWS Patching-Service utilizing serverless & event-driven automation to manage monthly patching for 1,000+ EC2 instances across 500+ AWS accounts"
           - "Technical Leadership: Served as Interim Team Lead; managed end-to-end recruitment, onboarding, and goal-setting while collaborating with Product Managers to define delivery timelines"
           - "AIOps Innovation: Developed an LLM-integrated CLI tool for advanced debugging; implemented data & prompt engineering for log processing to optimize token usage, resulting in improved accuracy and cost efficiency"
@@ -43,9 +43,8 @@ experiences:
       - title: "Professional Experience"
         highlights:
           - "Service Ownership: Designed and launched an event-driven, serverless patch management MVP that achieved rapid adoption by 10+ product teams across 30 AWS accounts"
-          - "Cost Optimization: Optimized deployment pipelines for EKS clusters and AMI distributions, resulting in approx. $10,000 YOY savings"
+          - "Cost & Pipeline Optimization: Refactored deployment pipelines for EKS clusters and AMI distributions to save approximately $10,000 Quarterly, and eliminated manual work by building self-service pipelines for cross-org image copying and EC2 SSM document management."
           - "Security & Governance: Managed the AWS Account management pipeline, implementing SCPs and IAM hardening based on security protocols"
-          - "Automation Excellence: Eliminated manual overhead by building self-service pipelines for AMI distribution, cross-org image copying, and SSM document management for EC2 instances"
           - "Data-Driven Growth: Developed a statistics and data processing pipeline to track patching service adoption metrics, using these insights to drive new feature development based on user pain points"
           - "Release Management: Directed monthly release cycles, ensuring full compliance with release notes and distribution reporting"
           - "Enablement: Authored comprehensive service documentation and recorded technical tutorial videos to streamline team and end-user onboarding"
@@ -180,11 +179,11 @@ career_stats:
     color: "#4fd1c5"
 
   - value: "1,000+"
-    label: CI/CD Jobs monthly
+    label: Weekly GitLab Jobs
     color: "#60a5fa"
 
   - value: "$10K+"
-    label: YOY Savings
+    label: Quarterly Savings
     color: "#4fd1c5"
 
 # Page metadata
