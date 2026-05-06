@@ -5,11 +5,12 @@ concurrency:
   cancel-in-progress: false
 
 on:
-  push:
-    branches:
-      - main
-      - master
   workflow_dispatch:
+    inputs:
+      disabled:
+        description: 'Workflow disabled'
+        required: false
+        default: 'true'
 
 permissions:
   contents: write
