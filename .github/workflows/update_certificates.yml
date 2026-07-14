@@ -1,7 +1,7 @@
 name: Generate Certificates
 
 concurrency:
-  group: portfolio-update-serialize
+  group: update-certificates-${{ github.ref }}
   cancel-in-progress: false
 
 on:

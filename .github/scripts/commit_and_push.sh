@@ -41,8 +41,9 @@ COMMIT_MSG=${COMMIT_MSG//\{COUNT\}/$COUNT}
 # Commit
 git commit -m "$COMMIT_MSG"
 
-# Pull and push
-git pull origin "$BRANCH" --no-rebase || echo "Pull had conflicts, continuing"
+# Rebase rather than creating a merge commit. If another update touched the same
+# generated file, fail safely and leave the branch unchanged for review.
+git pull --rebase origin "$BRANCH"
 git push origin "$BRANCH"
 
 echo "Changes pushed"

@@ -1,7 +1,7 @@
 name: Fetch Medium posts
 
 concurrency:
-  group: portfolio-update-serialize
+  group: fetch-medium-${{ github.ref }}
   cancel-in-progress: false
 
 on:

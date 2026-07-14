@@ -1,7 +1,7 @@
 name: Generate Experience Page
 
 concurrency:
-  group: portfolio-update-serialize
+  group: update-experience-${{ github.ref }}
   cancel-in-progress: false
 
 on:

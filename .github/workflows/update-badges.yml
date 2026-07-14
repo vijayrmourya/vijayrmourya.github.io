@@ -1,7 +1,7 @@
 name: Update Badge Certifications
 
 concurrency:
-  group: portfolio-update-serialize
+  group: update-badges-${{ github.ref }}
   cancel-in-progress: false
 on:
   push:

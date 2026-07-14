@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 {
   "source": "https://medium.com/@vjmourya",
   "posts": [
@@ -39,46 +38,4 @@
       "excerpt": "You copy-paste a 12-page report into ChatGPT (or your Gen AI flavor of the month), confidently type “Summarize this” , hit enter… and boom — out comes a..."
     }
   ]
-=======
-{
-  "source": "https://medium.com/@vjmourya",
-  "posts": [
-    {
-      "title": "“AI-Accelerated Development” is Just a Cute Name for Not Knowing What You’re Doing",
-      "link": "https://medium.com/@vjmourya/ai-accelerated-development-is-just-a-cute-name-for-not-knowing-what-youre-doing-9cf63f8d4447?source=rss-c49948e7594d------2",
-      "date": "2026-05-02T06:32:44",
-      "excerpt": "Calling Yourself an “AIOps Engineer” Because You Wrapped an API is Like Claiming Michelin Status for Microwaving a Hot Pocket. Panicking Engineer Recently, I..."
-    },
-    {
-      "title": "The $12,500 AWS Infra Mistake That Starts with One Checkbox",
-      "link": "https://medium.com/@vjmourya/the-12-500-aws-infra-mistake-that-starts-with-one-checkbox-7be86b493838?source=rss-c49948e7594d------2",
-      "date": "2026-03-10T15:54:39",
-      "excerpt": "Cloud storage pricing looks deceptively simple, Store data. Pay per GB. Move on. Cost of monitoring S3 bucket That mental model works until your buckets start..."
-    },
-    {
-      "title": "The Agentic Prompting Style Most AI Users Never Learn",
-      "link": "https://medium.com/@vjmourya/the-agentic-prompting-style-most-ai-users-never-learn-7689ee04caaf?source=rss-c49948e7594d------2",
-      "date": "2026-01-15T04:25:56",
-      "excerpt": "A few years ago, a chatbot answered questions. Today, that same interface can act like a negotiation coach, a writing editor, a language tutor, or a grant..."
-    },
-    {
-      "title": "Mastering boto3 Authentication in AWS: Sessions, Clients, and Cross-Account Access (and a Sprinkle…",
-      "link": "https://medium.com/@vjmourya/mastering-boto3-authentication-in-aws-sessions-clients-and-cross-account-access-and-a-sprinkle-29046f3e6a93?source=rss-c49948e7594d------2",
-      "date": "2025-11-15T13:43:51",
-      "excerpt": "Saving Cost with boto3 Authentication in AWS: Sessions, Clients, and Cross-Account Access (and a Sprinkle of Latency Drama) The Curious Case of boto3..."
-    },
-    {
-      "title": "How I Stopped Getting “AI Summaries” That Read Like Batman Explaining His Feelings",
-      "link": "https://medium.com/@vjmourya/how-i-stopped-getting-ai-summaries-that-read-like-batman-explaining-his-feelings-51183a937222?source=rss-c49948e7594d------2",
-      "date": "2025-10-13T14:12:55",
-      "excerpt": "You copy-paste a 12-page report into ChatGPT (or your Gen AI flavor of the month), confidently type “Summarize this” , hit enter… and boom — out comes a..."
-    },
-    {
-      "title": "Emotions in the AI? How Your Prompts Shape Its Personality!",
-      "link": "https://medium.com/@vjmourya/emotions-in-the-ai-how-your-prompts-shape-its-personality-f6168a7f985a?source=rss-c49948e7594d------2",
-      "date": "2025-09-27T10:00:58",
-      "excerpt": "AI girlfriends are everywhere. From viral TikTok clips of people confessing their “relationships” with chatbots, to apps promising the perfect..."
-    }
-  ]
->>>>>>> Stashed changes
 }
