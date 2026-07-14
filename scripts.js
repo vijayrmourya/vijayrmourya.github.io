@@ -1,3 +1,22 @@
+// Escape remote or generated text before rendering it into HTML.
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  })[character]);
+}
+
+function safeUrl(value, { allowRelative = false } = {}) {
+  try {
+    const url = new URL(String(value), window.location.origin);
+    if ((allowRelative && url.origin === window.location.origin) || ['http:', 'https:'].includes(url.protocol)) {
+      return url.href;
+    }
+  } catch (_) {
+    // Render no link for malformed values.
+  }
+  return '#';
+}
+
 // Load and render Medium posts
 function renderMediumPosts(targetId='medium-posts') {
   const container = document.getElementById(targetId);
@@ -13,11 +32,11 @@ function renderMediumPosts(targetId='medium-posts') {
       }
 
       container.innerHTML = posts.map(p => `
-        <a href="${p.link}" target="_blank" rel="noopener" class="card" style="display:block;text-decoration:none;transition:all 0.3s">
+        <a href="${safeUrl(p.link)}" target="_blank" rel="noopener" class="card" style="display:block;text-decoration:none;transition:all 0.3s">
           <div style="margin-bottom:12px">
-            <strong style="color:#e6eef8;font-size:1.05rem;line-height:1.4;display:block">${p.title}</strong>
+            <strong style="color:#e6eef8;font-size:1.05rem;line-height:1.4;display:block">${escapeHtml(p.title)}</strong>
           </div>
-          <div class="small" style="color:var(--muted);line-height:1.6;margin-bottom:12px">${p.excerpt}</div>
+          <div class="small" style="color:var(--muted);line-height:1.6;margin-bottom:12px">${escapeHtml(p.excerpt)}</div>
           <div class="small" style="color:var(--accent);font-weight:600;display:flex;justify-content:space-between;align-items:center">
             <span>${p.date ? new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Read article'}</span>
             <span style="font-size:0.8rem">Read more →</span>
@@ -46,10 +65,10 @@ function renderCertificates() {
       const summaryGrid = summaryContainer.querySelector('.grid');
 
       summaryGrid.innerHTML = Object.entries(categories).map(([key, cat]) => `
-        <div class="card" style="text-align:center;padding:16px;cursor:pointer" onclick="scrollToCertCategory('${key}')">
-          <div style="font-size:2rem;margin-bottom:8px">${cat.icon}</div>
-          <div style="font-weight:600;font-size:1.2rem;color:${cat.color}">${cat.count}</div>
-          <div class="small" style="margin-top:4px">${cat.display_name}</div>
+        <div class="card" style="text-align:center;padding:16px;cursor:pointer" data-cert-category="${escapeHtml(key)}" role="button" tabindex="0">
+          <div style="font-size:2rem;margin-bottom:8px">${escapeHtml(cat.icon)}</div>
+          <div style="font-weight:600;font-size:1.2rem;color:${escapeHtml(cat.color)}">${escapeHtml(cat.count)}</div>
+          <div class="small" style="margin-top:4px">${escapeHtml(cat.display_name)}</div>
         </div>
       `).join('');
 
@@ -57,18 +76,18 @@ function renderCertificates() {
       listContainer.innerHTML = Object.entries(categories).map(([key, cat]) => `
         <div id="cert-category-${key}" style="margin-bottom:40px">
           <h3 style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-            <span style="font-size:1.5rem">${cat.icon}</span>
-            ${cat.display_name}
-            <span class="small" style="color:var(--muted);font-weight:normal">(${cat.count} certificates)</span>
+            <span style="font-size:1.5rem">${escapeHtml(cat.icon)}</span>
+            ${escapeHtml(cat.display_name)}
+            <span class="small" style="color:var(--muted);font-weight:normal">(${escapeHtml(cat.count)} certificates)</span>
           </h3>
           <div class="grid">
             ${cat.certificates.map(cert => `
-              <a href="${cert.path}" target="_blank" class="card" style="display:block;text-decoration:none;padding:20px;transition:all 0.3s">
+              <a href="${safeUrl(cert.path, { allowRelative: true })}" target="_blank" rel="noopener" class="card" style="display:block;text-decoration:none;padding:20px;transition:all 0.3s">
                 <div style="display:flex;align-items:flex-start;gap:12px">
                   <div style="font-size:2rem;opacity:0.6;flex-shrink:0">📄</div>
                   <div style="flex:1;min-width:0">
-                    <div style="font-weight:600;font-size:1.05rem;color:#e6eef8;margin-bottom:8px;line-height:1.4;word-wrap:break-word">${cert.title}</div>
-                    <div class="small" style="color:var(--accent);font-weight:600">${cert.provider}</div>
+                    <div style="font-weight:600;font-size:1.05rem;color:#e6eef8;margin-bottom:8px;line-height:1.4;word-wrap:break-word">${escapeHtml(cert.title)}</div>
+                    <div class="small" style="color:var(--accent);font-weight:600">${escapeHtml(cert.provider)}</div>
                   </div>
                 </div>
               </a>
@@ -76,6 +95,13 @@ function renderCertificates() {
           </div>
         </div>
       `).join('');
+      summaryGrid.querySelectorAll('[data-cert-category]').forEach(card => {
+        const handleActivate = () => scrollToCertCategory(card.dataset.certCategory);
+        card.addEventListener('click', handleActivate);
+        card.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); handleActivate(); }
+        });
+      });
     })
     .catch(err => {
       console.warn('certificates load failed', err);
@@ -170,22 +196,21 @@ function renderBadgeCertifications() {
 
           const content = `
             <div class="badge">
-              <img src="${cert.badge_path}"
-                   alt="${cert.title}"
-                   onerror="this.src='${cert.fallback_svg}'">
+              <img src="${safeUrl(cert.badge_path, { allowRelative: true })}"
+                   alt="${escapeHtml(cert.title)}">
               <div class="issuer" style="margin-top:8px">
-                <strong style="display:block;margin-bottom:4px;color:#e6eef8">${cert.title}</strong>
-                <span style="color:var(--muted)">${cert.provider}</span>
+                <strong style="display:block;margin-bottom:4px;color:#e6eef8">${escapeHtml(cert.title)}</strong>
+                <span style="color:var(--muted)">${escapeHtml(cert.provider)}</span>
                 ${cert.issue_date ? `<div class="small" style="margin-top:4px;color:var(--muted)">Issued: ${new Date(cert.issue_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'})}</div>` : ''}
                 ${cert.expiry_date ? `<div class="small" style="color:var(--muted)">Expires: ${new Date(cert.expiry_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short'})}</div>` : ''}
                 ${expiryWarning}
-                ${cert.description ? `<div class="small" style="margin-top:8px;color:var(--muted);font-style:italic">${cert.description}</div>` : ''}
+                ${cert.description ? `<div class="small" style="margin-top:8px;color:var(--muted);font-style:italic">${escapeHtml(cert.description)}</div>` : ''}
               </div>
             </div>
           `;
 
           if (hasVerification) {
-            return `<a href="${cert.verification_url}" target="_blank" rel="noopener" style="text-decoration:none">${content}</a>`;
+            return `<a href="${safeUrl(cert.verification_url)}" target="_blank" rel="noopener" style="text-decoration:none">${content}</a>`;
           } else {
             return content;
           }
@@ -230,14 +255,13 @@ function renderBadgeCertificationsSummary() {
 
       // Render ALL badges in smaller size
       container.innerHTML = allCerts.map(cert => `
-        <a href="${cert.verification_url}" target="_blank" rel="noopener" style="text-decoration:none; display:block;">
+        <a href="${safeUrl(cert.verification_url)}" target="_blank" rel="noopener" style="text-decoration:none; display:block;">
           <div style="text-align:center;">
             <div style="width:100%; aspect-ratio:1; background:rgba(255,255,255,0.95); border-radius:6px; padding:6px; border:1px solid rgba(96,165,250,0.3); transition:all 0.3s; overflow:hidden;"
                  onmouseover="this.style.borderColor='#60a5fa'; this.style.transform='translateY(-2px)'"
                  onmouseout="this.style.borderColor='rgba(96,165,250,0.3)'; this.style.transform='translateY(0)'">
-              <img src="${cert.badge_path}"
-                   alt="${cert.title}"
-                   onerror="this.src='${cert.fallback_svg}'"
+              <img src="${safeUrl(cert.badge_path, { allowRelative: true })}"
+                   alt="${escapeHtml(cert.title)}"
                    style="width:100%; height:100%; object-fit:contain;">
             </div>
           </div>

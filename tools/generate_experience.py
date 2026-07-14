@@ -179,7 +179,7 @@ def generate_experience_html(config):
             <a href="experience.html" class="active">Experience</a>
             <a href="projects.html">Projects</a>
             <a href="certifications.html">Certifications</a>
-            <a href="study.html">Social</a>
+            <a href="study.html">Writing</a>
             <a href="contact.html">Contact</a>
         </nav>
 
@@ -190,7 +190,7 @@ def generate_experience_html(config):
                 <option selected value="experience.html">Experience</option>
                 <option value="projects.html">Projects</option>
                 <option value="certifications.html">Certifications</option>
-                <option value="study.html">Social</option>
+                <option value="study.html">Writing</option>
                 <option value="contact.html">Contact</option>
             </select>
         </div>

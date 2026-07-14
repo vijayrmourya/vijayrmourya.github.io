@@ -32,8 +32,8 @@ A CI-Driven Personal Portfolio Platform that automates content generation and bu
 
 ```bash
 # Clone repository
-git clone https://github.com/vijayrmourya/vijaymourya-master.git
-cd vijaymourya-master
+git clone https://github.com/vijayrmourya/vijayrmourya.github.io.git
+cd vijayrmourya.github.io
 
 # Start local server
 python3 -m http.server 8000
@@ -119,7 +119,7 @@ python3 tools/fetch_medium.py
 ## 📁 Project Structure
 
 ```
-vijaymourya-master/
+vijayrmourya.github.io/
 ├── *.html                        # Website pages
 ├── scripts.js                    # Dynamic content rendering
 ├── styles.css                    # Global styling

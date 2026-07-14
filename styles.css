@@ -34,6 +34,8 @@ p{margin:0 0 16px;color:var(--muted);line-height:1.6}
     margin-bottom: 1.5rem;
     line-height: 1.4;
 }
+.hero-proof{margin:0 0 22px;padding-left:20px;display:grid;gap:8px}
+.hero-proof li{padding-left:4px}
 
 .metric-value {
     font-size: 2rem;

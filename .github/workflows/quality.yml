@@ -1,0 +1,25 @@
+name: Portfolio quality checks
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate HTML
+        run: npx --yes html-validate@9 --config .htmlvalidate.json '*.html'
+      - name: Check internal links and assets
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --exclude-mail './**/*.html'
+

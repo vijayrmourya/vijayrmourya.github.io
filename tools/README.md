@@ -166,7 +166,7 @@ python3 tools/generate_experience.py
 ## 🎨 Project Structure
 
 ```
-vijaymourya-master/
+vijayrmourya.github.io/
 ├── *.html                        # HTML pages
 ├── styles.css                    # Styling
 ├── scripts.js                    # Client-side JS

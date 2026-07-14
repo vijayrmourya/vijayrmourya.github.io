@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Projects — Vijay Mourya</title><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"></head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Selected Projects — Vijay Mourya</title><meta name="description" content="Selected cloud infrastructure, Kubernetes, Amazon Bedrock, and automation projects by Senior DevOps & Platform Engineer Vijay Mourya."><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"></head>
 <body>
   <div class="container">
     <header class="header"><div class="brand"><img src="assets/DP/ProfilePicture.png" alt="VM" class="logo" style="width:56px;height:56px;border-radius:12px;"><div><div class="title">Vijay Mourya</div><div class="small">Projects & Repositories</div></div></div>
@@ -10,7 +10,7 @@
         <a href="experience.html">Experience</a>
         <a href="projects.html" class="active">Projects</a>
         <a href="certifications.html">Certifications</a>
-        <a href="study.html">Social</a>
+        <a href="study.html">Writing</a>
         <a href="contact.html">Contact</a>
       </nav>
       <div class="mobile-menu"><select id="mobile-nav">
@@ -19,7 +19,7 @@
         <option value="experience.html">Experience</option>
         <option selected value="projects.html">Projects</option>
         <option value="certifications.html">Certifications</option>
-        <option value="study.html">Social</option>
+        <option value="study.html">Writing</option>
         <option value="contact.html">Contact</option>
       </select></div>
     </header>
@@ -27,42 +27,50 @@
     <main>
       <section class="card hero-card">
         <h1>Projects & Portfolio</h1>
-        <p class="small">A collection of open-source projects, infrastructure tools, and automation frameworks I've built. All code is available on <a href="https://github.com/vijayrmourya" target="_blank">GitHub</a>.</p>
+        <p class="small">A focused selection of open-source infrastructure and AI tooling. Each project demonstrates an engineering decision, not just a technology list. Explore all code on <a href="https://github.com/vijayrmourya" target="_blank" rel="noopener">GitHub</a>.</p>
 
         <div class="section">
-          <h2>🚀 Featured Projects</h2>
+          <h2>🚀 Selected Projects</h2>
           <div class="grid projects-list" style="grid-template-columns:1fr">
-            <a href="https://github.com/vijayrmourya/3-tier-todo-crud-api-on-eks" target="_blank" class="card">
-              <strong>✨ 3-tier-todo-crud-api-on-eks</strong>
+            <a href="https://github.com/vijayrmourya/3-tier-todo-crud-api-on-eks" target="_blank" rel="noopener" class="card">
+              <strong>3-tier Todo API on EKS</strong>
               <div class="small" style="margin-top:8px">
-                Built and deployed a containerized FastAPI todo CRUD backend on AWS EKS, delivering scalable, low-latency API performance with Kubernetes orchestration.
-                Configured ALB Ingress for secure external routing, traffic management, and high-availability load balancing.
-                Used Terraform-based Infrastructure as Code to automate cluster provisioning, app deployment, and environment consistency across releases.
+                <strong>Problem:</strong> deploy a repeatable, production-shaped API platform.<br>
+                <strong>Approach:</strong> FastAPI on EKS, ALB ingress, and Terraform-managed infrastructure.<br>
+                <strong>Demonstrates:</strong> Kubernetes delivery, routing, and modular IaC.
               </div>
               <div class="small" style="margin-top:8px;color:var(--accent)">
                 #AWS #Kubernetes #Terraform #IaC #EKS #FastAPI #ELB #k8s-elb-controller #ModularInfrastructure
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/stateful-ai-chatbot-with-bedrock" target="_blank" class="card">
-              <strong>✨ stateful-ai-chatbot-with-bedrock</strong>
+            <a href="https://github.com/vijayrmourya/stateful-ai-chatbot-with-bedrock" target="_blank" rel="noopener" class="card">
+              <strong>Stateful AI Chatbot with Amazon Bedrock</strong>
               <div class="small" style="margin-top:8px">
-                A production-ready stateful chatbot built with FastAPI and Amazon Bedrock. It persists conversation history in MongoDB (local) or DynamoDB (AWS) to maintain context across sessions. Features sliding-window token trimming to stay within context limits, per-call cost tracking, and a built-in web UI. Demonstrates state management, serverless persistence, and automated cost-tracking in AI applications.
+                <strong>Problem:</strong> preserve useful AI context without uncontrolled token cost.<br>
+                <strong>Approach:</strong> FastAPI, Bedrock, MongoDB/DynamoDB persistence, sliding-window trimming, and per-call cost tracking.<br>
+                <strong>Demonstrates:</strong> stateful AI architecture and operational cost control.
               </div>
               <div class="small" style="margin-top:8px;color:var(--accent)">
                 #AWS #Bedrock #FastAPI #MongoDB #DynamoDB #Chatbot #Python #StatefulAI #CostTracking
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/bedrock-model-compare" target="_blank" class="card">
-              <strong>✨ bedrock-model-compare</strong>
+            <a href="https://github.com/vijayrmourya/bedrock-model-compare" target="_blank" rel="noopener" class="card">
+              <strong>Bedrock Model Compare</strong>
               <div class="small" style="margin-top:8px">
-                Interactive CLI that benchmarks Amazon Bedrock foundation models side-by-side — latency, token usage, and cost — in a single run. Send the same prompt to any combination of models across Amazon, Anthropic, Meta, Mistral, Google, NVIDIA, DeepSeek, Qwen, and more. Results are saved as a timestamped Markdown report sorted cheapest-first. Perfect for cost-conscious prompt engineering, model selection, and performance monitoring as new models and updates are released.
+                <strong>Problem:</strong> choose foundation models using comparable cost and latency evidence.<br>
+                <strong>Approach:</strong> a CLI that runs one prompt against selected Bedrock models and writes a cheapest-first Markdown report.<br>
+                <strong>Demonstrates:</strong> practical FinOps for generative AI.
               </div>
               <div class="small" style="margin-top:8px;color:var(--accent)">
                 #AWS #model-benchmarking #cost-optimization #ai-tool #Python #boto3 #Utilities #SDK #Bedrock #library
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/bedrock-cost-tracker-lib" target="_blank" class="card">
-              <strong>✨ bedrock-cost-tracker-lib</strong>
+          </div>
+
+          <h2 style="margin-top:32px">More Open-source Work</h2>
+          <div class="grid projects-list" style="grid-template-columns:1fr">
+            <a href="https://github.com/vijayrmourya/bedrock-cost-tracker-lib" target="_blank" rel="noopener" class="card">
+              <strong>Bedrock Cost Tracker Library</strong>
               <div class="small" style="margin-top:8px">
                 A non-invasive Python library for automated Amazon Bedrock cost tracking. Uses a decorator pattern to log token usage and USD cost to a local SQLite database for every call. Integrates with `bedrock-tui-helpers` for real-time pricing lookups and supports per-project cost segregation, making it ideal for monorepos or multi-service environments.
               </div>
@@ -70,8 +78,8 @@
                 #AWS #Bedrock #Python #CostTracking #SQLite #Automation #CloudCost
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/bedrock-tui-helpers" target="_blank" class="card">
-              <strong>✨ bedrock-tui-helpers</strong>
+            <a href="https://github.com/vijayrmourya/bedrock-tui-helpers" target="_blank" rel="noopener" class="card">
+              <strong>Bedrock TUI Helpers</strong>
               <div class="small" style="margin-top:8px">
                 Shared terminal UI components and Bedrock model data for Python CLI tools — one pricing table, one model catalogue cache, one interactive params wizard, one model picker. This package is the single source of truth for all Bedrock-related terminal tooling in this repo. Both bedrock-model-compare and the chatbot cost tracking depend on it. Add it to any project to get a full model catalogue, pricing, and interactive prompts for free.
               </div>
@@ -79,8 +87,8 @@
                 #AWS #ai-tool #Python #boto3 #Utilities #SDK #Bedrock #library
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/boto3-helpers" target="_blank" class="card">
-              <strong>✨ boto3-helpers</strong>
+            <a href="https://github.com/vijayrmourya/boto3-helpers" target="_blank" rel="noopener" class="card">
+              <strong>Boto3 Helpers</strong>
               <div class="small" style="margin-top:8px">
                 Reusable AWS SDK utilities for any Python project — eliminates repetitive boto3.client() calls, centralises region and credential resolution, caches clients at process scope, and provides idiomatic thin wrappers for Bedrock's control-plane and runtime APIs. Install once as an editable sibling package and every project in the repo gets consistent boto3 behaviour, a single mock-injection point for tests, and free connection reuse on warm Lambda invocations.
               </div>
@@ -89,8 +97,8 @@
               </div>
             </a>
 
-            <a href="https://github.com/vijayrmourya/multi-stack-cloudformation-tf-iac-module" target="_blank" class="card">
-              <strong>✨ multi-stack-cloudformation-tf-iac-module</strong>
+            <a href="https://github.com/vijayrmourya/multi-stack-cloudformation-tf-iac-module" target="_blank" rel="noopener" class="card">
+              <strong>Multi-stack CloudFormation + Terraform IaC Module</strong>
               <div class="small" style="margin-top:8px">
                 A structured AWS infrastructure-as-code reference that demonstrates a hybrid provisioning pattern: Terraform as the orchestration layer driving CloudFormation stacks for core AWS resources. It encapsulates reusable templates for VPC setups, subnet segmentation, compute and storage services, and IAM roles with clean separation of concerns and modular design. This pattern supports production-aligned architecture and clear resource ownership across teams, enabling scalable, maintainable cloud deployments.
               </div>
@@ -98,8 +106,8 @@
                 #AWS #CloudFormation #Terraform #IaC #VPC #EC2 #S3 #ModularInfrastructure
               </div>
             </a>
-            <a href="https://github.com/vijayrmourya/ci-driven-portfolio" target="_blank" class="card">
-              <strong>✨ CI-Driven Portfolio Platform</strong>
+            <a href="https://github.com/vijayrmourya/ci-driven-portfolio" target="_blank" rel="noopener" class="card">
+              <strong>CI-driven Portfolio Platform</strong>
               <div class="small" style="margin-top:8px">
                 A fully automated portfolio platform built with static HTML, Python automation scripts, and GitHub Actions. This repository powers my personal site, generating pages and content from YAML configurations and external sources (badges, certifications, blog posts) and deploying via GitHub Pages. Showcases automation, scripting, CI/CD, and platform engineering in a real end-to-end system.
               </div>
