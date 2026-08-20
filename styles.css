@@ -9,14 +9,15 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#0410
 a{color:var(--accent);text-decoration:none;transition:color 0.2s ease}
 a:hover{color:var(--accent-light)}
 .container{max-width:1200px;width:100%;margin:0 auto;padding:28px}
-.header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-subtle)}
-.brand{display:flex;align-items:center;gap:12px;transition:transform 0.2s ease}
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-subtle)}
+.brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;transition:transform 0.2s ease}
 .brand:hover{transform:translateY(-2px)}
 .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4fd1c5);object-fit:cover;border:2px solid rgba(255,255,255,0.1);box-shadow:0 4px 12px rgba(96,165,250,0.3);transition:all 0.3s ease;cursor:pointer}
 .logo:hover{box-shadow:0 6px 20px rgba(96,165,250,0.5);transform:scale(1.05);border-color:var(--accent)}
-.title{font-size:1.15rem;font-weight:700;background:linear-gradient(90deg,#fff,#cfe8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav{display:flex;gap:8px;align-items:center}
-.nav a{padding:10px 16px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;transition:all 0.2s ease;position:relative}
+.title{font-size:1.15rem;font-weight:700;white-space:nowrap;background:linear-gradient(90deg,#fff,#cfe8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand .small{white-space:nowrap;font-size:.8rem}
+.nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav a{padding:9px 13px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.94rem;white-space:nowrap;transition:all 0.2s ease;position:relative}
 .nav a:hover{background:rgba(255,255,255,0.05);color:var(--accent-light);transform:translateY(-1px)}
 .nav a.active{background:linear-gradient(135deg, rgba(96,165,250,0.15), rgba(79,209,197,0.1));color:var(--accent);box-shadow:0 4px 12px rgba(96,165,250,0.2);border:1px solid rgba(96,165,250,0.2)}
 .hero{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;margin-bottom:32px}
@@ -218,3 +219,62 @@ p{margin:0 0 16px;color:var(--muted);line-height:1.6}
   opacity: 0.6;
 }
 
+/* Core tech stack — full-colour logos on light tiles.
+   Tiles keep dark brand marks legible against the dark page background, and
+   normalise the mixed aspect ratios (square icons vs wide wordmarks). */
+.logo-wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 16px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 20px 20px;
+}
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 88px;
+}
+.logo-item img {
+  width: 84px;
+  height: 62px;
+  padding: 11px 12px;
+  box-sizing: border-box;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.logo-item span {
+  font-size: 0.7rem;
+  letter-spacing: 0.2px;
+  color: var(--muted);
+  text-align: center;
+  transition: color 0.2s ease;
+}
+.logo-item:hover img {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 16px rgba(96, 165, 250, 0.25);
+}
+.logo-item:hover span {
+  color: #e6eef8;
+}
+
+@media (max-width: 640px) {
+  .logo-wall {
+    gap: 14px 10px;
+    padding: 20px 12px 16px;
+  }
+  .logo-item {
+    width: 72px;
+  }
+  .logo-item img {
+    width: 68px;
+    height: 52px;
+    padding: 9px;
+  }
+}
