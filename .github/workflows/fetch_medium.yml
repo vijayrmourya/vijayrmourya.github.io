@@ -1,16 +1,15 @@
 name: Fetch Medium posts
 
+# Deliberately standalone: assets/medium_posts.json is read by scripts.js in the
+# browser, so refreshing it never requires a site rebuild.
+
 concurrency:
-  group: fetch-medium-${{ github.ref }}
+  group: fetch-medium
   cancel-in-progress: false
 
 on:
-  push:
-    paths:
-      - 'tools/**'
-      - '.github/workflows/fetch_medium.yml'
   schedule:
-    - cron: '0 6 * * *' # daily at 06:00 UTC (adjust if you want)
+    - cron: '0 0 * * *' # daily at 00:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -22,29 +21,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Full history so the rebase in commit_and_push.sh has something to replay onto.
           fetch-depth: 0
           persist-credentials: true
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install feedparser
+        run: pip install --quiet feedparser
 
       - name: Run fetch script
         env:
           MEDIUM_USERNAME: vjmourya
           MAX_POSTS: '6'
-        run: |
-          python tools/fetch_medium.py assets/medium_posts.json
+        run: python3 tools/fetch_medium.py assets/medium_posts.json
 
       - name: Commit and push medium_posts.json
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILES: "assets/medium_posts.json"
-          COMMIT_MSG_TEMPLATE: "chore: update medium posts [skip ci]"
+          FILES: 'assets/medium_posts.json'
+          COMMIT_MSG_TEMPLATE: 'chore: update medium posts [skip ci]'
         run: bash .github/scripts/commit_and_push.sh
