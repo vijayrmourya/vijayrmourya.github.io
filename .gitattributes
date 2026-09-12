@@ -1,0 +1,19 @@
+# Normalize line endings so scripts run on Linux CI runners.
+* text=auto eol=lf
+
+# Shell scripts must always be LF: CRLF breaks the `#!/usr/bin/env bash` shebang.
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+
+# Binary assets must never be converted.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
