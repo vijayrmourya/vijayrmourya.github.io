@@ -115,9 +115,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Full history so the rebase in commit_and_push.sh has something to replay onto.
           fetch-depth: 0
           persist-credentials: true
+
+      - name: Ignore pre-existing CRLF under .github
+        # .gitattributes marks *.sh/*.yml as `text`, so files still committed with CRLF read as
+        # permanently modified and block any merge. $GIT_DIR/info/attributes outranks
+        # .gitattributes; committing the real fix is impossible (GITHUB_TOKEN has no `workflows` scope).
+        run: echo '/.github/** -text' >> .git/info/attributes
+
+      - name: Fast-forward to the remote tip
+        # Done while the tree is still pristine, so the later push is already up to date
+        # and never needs a rebase (which a CRLF-dirty worktree would refuse anyway).
+        run: git pull --ff-only origin "${GITHUB_REF#refs/heads/}"
 
       - name: Download built site
         uses: actions/download-artifact@v4
@@ -125,10 +135,8 @@ jobs:
           name: site
 
       - name: Normalise committed line endings
-        # .gitattributes only applies to newly staged content, so blobs already committed as
-        # CRLF leave every checkout dirty and block the rebase. Self-healing no-op once clean.
-        # .github is excluded: GITHUB_TOKEN has no `workflows` scope, so a renormalised
-        # workflow file in the commit makes the push fail with "remote rejected".
+        # One-off self-heal: .gitattributes never rewrites blobs already committed as CRLF.
+        # .github is excluded because GITHUB_TOKEN cannot push workflow file changes.
         run: git add --renormalize -- . ':(exclude).github'
 
       - name: Commit and push generated site
