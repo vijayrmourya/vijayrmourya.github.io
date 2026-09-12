@@ -7,7 +7,7 @@ on:
   push:
     branches: [main, master]
     paths:
-      - 'tools/badge_certifications.yaml'
+      - 'data/badges.yaml'
       - 'tools/generate_badge_certifications.py'
       - 'assets/badges/**'
   workflow_dispatch:
@@ -29,14 +29,11 @@ jobs:
       - name: Install dependencies
         run: pip install -q pyyaml
       - name: Generate badges
-        run: |
-          chmod +x .github/scripts/commit_and_push.sh .github/scripts/certificates_summary.sh && ls -l .github/scripts
-          python3 tools/generate_badge_certifications.py
+        run: python3 tools/generate_badge_certifications.py
       - name: Commit and push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILES: "assets/badge_certifications.json"
           COMMIT_MSG_TEMPLATE: "chore: update badge certifications ({COUNT} badges) [skip ci]"
           COUNT_CMD: "python3 -c \"import json; print(json.load(open('assets/badge_certifications.json')).get('total_count',0))\""
-        run: |
-          .github/scripts/commit_and_push.sh
+        run: bash .github/scripts/commit_and_push.sh
