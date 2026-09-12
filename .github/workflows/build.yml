@@ -127,7 +127,9 @@ jobs:
       - name: Normalise committed line endings
         # .gitattributes only applies to newly staged content, so blobs already committed as
         # CRLF leave every checkout dirty and block the rebase. Self-healing no-op once clean.
-        run: git add --renormalize .
+        # .github is excluded: GITHUB_TOKEN has no `workflows` scope, so a renormalised
+        # workflow file in the commit makes the push fail with "remote rejected".
+        run: git add --renormalize -- . ':(exclude).github'
 
       - name: Commit and push generated site
         env:
