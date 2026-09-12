@@ -1,55 +1,67 @@
-name: Generate Certificates
+# ============================================================================
+# DISABLED - PENDING DELETION
+#
+# Superseded by build.yml. This workflow calls
+# tools/generate_certificates_from_yaml.py, which does not exist in the repo,
+# and commits assets/certificates.json, which also does not exist. Credential
+# data now lives in data/badges.yaml and is rendered into
+# assets/badge_certifications.json by tools/generate_badge_certifications.py
+# (invoked automatically by tools/build.py).
+#
+# Delete this file - and .github/scripts/certificates_summary.sh, its only
+# consumer - once build.yml is confirmed working.
+# ============================================================================
 
-concurrency:
-  group: update-certificates-${{ github.ref }}
-  cancel-in-progress: false
+# name: Generate Certificates
+#
+# concurrency:
+#   group: update-certificates-${{ github.ref }}
+#   cancel-in-progress: false
+#
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       disabled:
+#         description: 'Workflow disabled'
+#         required: false
+#         default: 'true'
+#
+# permissions:
+#   contents: write
+# jobs:
+#   generate-certificates:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+#           persist-credentials: true
+#
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.11'
+#
+#       - name: Install dependencies
+#         run: pip install PyYAML
+#
+#       - name: Generate certificates metadata
+#         run: |
+#           echo "Generating certificates metadata from YAML..."
+#           python3 tools/generate_certificates_from_yaml.py
+#           echo "Certificates metadata generated"
+#
+#       - name: Commit and push if changed
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           FILES: "assets/certificates.json"
+#           COMMIT_MSG_TEMPLATE: "chore: update certificates.json ({COUNT} certificates) [skip ci]"
+#           COUNT_CMD: "grep -c '\"title\"' assets/certificates.json || echo 0"
+#         run: bash .github/scripts/commit_and_push.sh
+#
+#       - name: Summary
+#         if: always()
+#         run: bash .github/scripts/certificates_summary.sh assets/certificates.json
 
-on:
-  workflow_dispatch:
-    inputs:
-      disabled:
-        description: 'Workflow disabled'
-        required: false
-        default: 'true'
-
-permissions:
-  contents: write
-jobs:
-  generate-certificates:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install PyYAML
-
-      - name: Generate certificates metadata
-        run: |
-          chmod +x .github/scripts/commit_and_push.sh .github/scripts/certificates_summary.sh && ls -l .github/scripts
-          echo "🔄 Generating certificates metadata from YAML..."
-          python3 tools/generate_certificates_from_yaml.py
-          echo "✅ Certificates metadata generated"
-
-      - name: Commit and push if changed
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILES: "assets/certificates.json"
-          COMMIT_MSG_TEMPLATE: "chore: update certificates.json ({COUNT} certificates) [skip ci]"
-          COUNT_CMD: "grep -c '\"title\"' assets/certificates.json || echo 0"
-        run: |
-          .github/scripts/commit_and_push.sh
-
-      - name: Summary
-        if: always()
-        run: |
-          .github/scripts/certificates_summary.sh assets/certificates.json
