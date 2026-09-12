@@ -1,7 +1,10 @@
-name: Build site
+name: Portfolio pipeline
+
+# One serialised pipeline: validate -> build -> quality -> publish.
+# Every job is gated on the previous one, so nothing runs independently.
 
 concurrency:
-  group: build-${{ github.ref }}
+  group: portfolio-pipeline
   cancel-in-progress: false
 
 on:
@@ -10,46 +13,119 @@ on:
     paths:
       - 'data/**'
       - 'templates/**'
-      - 'tools/build.py'
-      - 'tools/validate.py'
-      - 'tools/generate_badge_certifications.py'
-      - 'assets/badges/**'
+      - 'tools/**'
+      - 'assets/**'
+      - 'styles.css'
+      - 'scripts.js'
+      - '.htmlvalidate.json'
       - '.github/workflows/build.yml'
+  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+env:
+  PYTHON_VERSION: '3.11'
 
 jobs:
-  build:
+  validate:
+    name: 1. Validate data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: pip install --quiet PyYAML Jinja2
+
+      - name: Validate data/*.yaml
+        run: python3 tools/validate.py
+
+  build:
+    name: 2. Build pages
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: pip install --quiet PyYAML Jinja2
+
+      - name: Render pages and JSON assets
+        run: python3 tools/build.py
+
+      - name: Upload built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: |
+            *.html
+            assets/badge_certifications.json
+          if-no-files-found: error
+          retention-days: 1
+
+  quality:
+    name: 3. Quality gate
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate HTML
+        run: npx --yes html-validate@9 --config .htmlvalidate.json '*.html'
+
+      - name: Check internal links and assets
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --exclude-mail './**/*.html'
+          fail: true
+
+  publish:
+    name: 4. Publish
+    needs: quality
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so the rebase in commit_and_push.sh has something to replay onto.
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Download built site
+        uses: actions/download-artifact@v4
         with:
-          python-version: '3.11'
+          name: site
 
-      - name: Install dependencies
-        run: pip install PyYAML Jinja2
-
-      - name: Validate data
-        run: python3 tools/validate.py
-
-      - name: Build pages and JSON assets
-        run: python3 tools/build.py
-
-      - name: Commit and push if changed
+      - name: Commit and push generated site
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILES: >-
-            index.html experience.html projects.html certifications.html
-            services.html study.html contact.html
-            assets/badge_certifications.json
-          COMMIT_MSG_TEMPLATE: "chore: rebuild site from data/*.yaml [skip ci]"
+          FILES: '*.html assets/badge_certifications.json'
+          COMMIT_MSG_TEMPLATE: 'chore: rebuild site ({COUNT} pages) [skip ci]'
+          COUNT_CMD: "ls -1 *.html | wc -l"
         run: bash .github/scripts/commit_and_push.sh
