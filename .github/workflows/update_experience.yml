@@ -1,53 +1,63 @@
-name: Generate Experience Page
+# ============================================================================
+# DISABLED - PENDING DELETION
+#
+# Superseded by build.yml. This workflow calls tools/generate_experience.py,
+# which does not exist in the repo, so every run fails. experience.html is now
+# rendered from data/experience.yaml + templates/experience.html.j2 by
+# tools/build.py.
+#
+# Delete this file once build.yml is confirmed working.
+# ============================================================================
 
-concurrency:
-  group: update-experience-${{ github.ref }}
-  cancel-in-progress: false
+# name: Generate Experience Page
+#
+# concurrency:
+#   group: update-experience-${{ github.ref }}
+#   cancel-in-progress: false
+#
+# on:
+#   push:
+#     branches:
+#       - main
+#       - master
+#     paths:
+#       - 'tools/experience.yaml'
+#       - 'tools/generate_experience.py'
+#       - '.github/workflows/update_experience.yml'
+#   workflow_dispatch:
+#
+# permissions:
+#   contents: write
+# jobs:
+#   generate-experience:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+#           persist-credentials: true
+#
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.11'
+#
+#       - name: Install dependencies
+#         run: pip install PyYAML
+#
+#       - name: Generate experience page
+#         run: |
+#           echo "Generating experience.html from YAML..."
+#           python3 tools/generate_experience.py
+#           echo "Experience page generated"
+#
+#       - name: Commit and push if changed
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           FILES: "experience.html"
+#           COMMIT_MSG_TEMPLATE: "chore: regenerate experience.html ({COUNT} experiences) [skip ci]"
+#           COUNT_CMD: "grep -c 'class=\"card company-card\"' experience.html || echo 0"
+#         run: bash .github/scripts/commit_and_push.sh
 
-on:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - 'tools/experience.yaml'
-      - 'tools/generate_experience.py'
-      - '.github/workflows/update_experience.yml'
-  workflow_dispatch:
-
-permissions:
-  contents: write
-jobs:
-  generate-experience:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install PyYAML
-
-      - name: Generate experience page
-        run: |
-          chmod +x .github/scripts/commit_and_push.sh .github/scripts/certificates_summary.sh && ls -l .github/scripts
-          echo "🔄 Generating experience.html from YAML..."
-          python3 tools/generate_experience.py
-          echo "✅ Experience page generated"
-
-      - name: Commit and push if changed
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILES: "experience.html"
-          COMMIT_MSG_TEMPLATE: "chore: regenerate experience.html ({COUNT} experiences) [skip ci]"
-          COUNT_CMD: "grep -c 'class=\"card company-card\"' experience.html || echo 0"
-        run: |
-          .github/scripts/commit_and_push.sh
