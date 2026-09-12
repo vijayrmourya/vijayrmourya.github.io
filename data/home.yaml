@@ -1,0 +1,122 @@
+# Homepage-only content. Anything shared with other pages lives in
+# site.yaml (identity/nav) or experience.yaml (roles, dates, summaries).
+
+hero:
+  heading: Internal developer platforms — and the AI tooling on top of them.
+  subtitle: >-
+    I'm a platform engineer. I build the systems other engineers ship on: OS image
+    factories spanning 500+ cloud accounts, self-service access control, and
+    autoscaling CI on Kubernetes — plus the agents and CLIs that make those
+    platforms easier to live with.
+  proof:
+    - Multi-cloud image platform across 500+ AWS and 100+ GCP accounts
+    - Serverless patching automation for 1,000+ EC2 instances each month
+    - Self-service IAM control plane and autoscaling CI platform handling 1,000+ weekly jobs
+  ctas:
+    - {label: "📧 Let's Talk", href: contact.html, style: cta cta-primary}
+    - {label: View Selected Work, href: projects.html, style: cta cta-secondary}
+    - {label: Explore experience →, href: experience.html, style: cta-link}
+
+impact_metrics:
+  - {value: "1,000+", label: Weekly CI Jobs}
+  - {value: "1000+", label: EC2 Patched Monthly}
+  - {value: "$10K+", label: Cloud Storage Savings}
+  - {value: "5+", label: Teams Supported}
+  - {value: "Multi", label: AWS & GCP}
+
+# Logo wall. Rendered monochrome at a fixed height so mixed aspect ratios
+# (square icons vs wide wordmarks) sit together cleanly.
+tech_logos:
+  - {name: AWS, logo: aws.svg}
+  - {name: Google Cloud, logo: gcp.svg}
+  - {name: Kubernetes, logo: kubernetes.svg}
+  - {name: Helm, logo: helm.svg}
+  - {name: Docker, logo: docker.svg}
+  - {name: Terraform, logo: terraform.svg}
+  - {name: Packer, logo: packer.svg}
+  - {name: Ansible, logo: ansible.svg}
+  - {name: GitLab, logo: gitlab.svg}
+  - {name: GitHub, logo: github.svg}
+  - {name: Python, logo: python.svg}
+  - {name: Bash, logo: bash.svg}
+  - {name: Linux, logo: linux.svg}
+
+key_achievements:
+  - icon: "🎤"
+    title: Live Presentation
+    description: >-
+      Presented platform releases and architecture updates to 200+ technical and
+      business stakeholders at Roche
+  - icon: "🏆"
+    title: Recognition Awards
+    description: Multiple internal recognitions for technical excellence
+  - icon: "📐"
+    title: Architecture Design
+    description: Service architecture design and comprehensive documentation
+  - icon: "📚"
+    title: Documentation
+    description: Extensive technical documentation and SOPs
+
+writing_links:
+  - title: 📝 Medium Blog
+    href: https://medium.com/@vjmourya
+    external: true
+    description: Technical deep-dives on AWS, DevOps, Kubernetes, AI, and cloud infrastructure
+    cta: Read latest articles →
+  - title: 🏆 Credentials
+    href: certifications.html
+    description: Professional certifications and credential badges
+    cta: View credentials →
+  - title: 🌐 Social Profiles
+    href: study.html
+    description: Connect on LinkedIn, GitHub, Medium, and other platforms
+    cta: Connect with me →
+
+featured_projects:
+  - title: GitHub repositories
+    href: projects.html
+    description: Terraform modules, automation scripts, infra tools.
+
+what_i_do_best:
+  - icon: "🏗️"
+    title: Infrastructure as Code
+    description: >-
+      Terraform modules, Helm charts, and GitOps patterns for reproducible multi-cloud
+      infrastructure. Expertise in AWS & GCP automation.
+  - icon: "⚡"
+    title: CI/CD Platform Engineering
+    description: >-
+      GitLab runner infrastructure on Kubernetes (EKS/GKE) supporting over 1,000 weekly
+      GitLab jobs. CodePipeline, Cloud Build integration.
+  - icon: "☁️"
+    title: Event-Driven Serverless
+    description: >-
+      AWS Lambda, EventBridge, Systems Manager automation. Event-driven patch management
+      and serverless workflows with TDD.
+  - icon: "🔒"
+    title: Security & Compliance
+    description: >-
+      Hardened image pipelines with Packer/Ansible. SSM document-based compliance
+      automation and AWS Inspector integration.
+  - icon: "💰"
+    title: Cost Optimization
+    description: >-
+      Automated resource cleanup and cost analysis delivering $10K+ Quarterly savings.
+      Athena/S3 metrics frameworks for insights.
+  - icon: "📐"
+    title: Technical Documentation
+    description: >-
+      Architecture diagrams (Lucid/Draw.io), SOPs, design documents, and video tutorials
+      for knowledge sharing and enablement.
+
+currently_building:
+  heading: 🔨 Currently Building
+  items:
+    - >-
+      An autonomous code-review agent (ONA) that analyses pull requests, suggests
+      refactoring, and asks reviewers targeted questions
+    - A documentation hub that strengthens how my team supports its platform services
+    - A self-service image-building CLI so any engineer can customise a compliant OS image
+    - >-
+      Open-source Amazon Bedrock tooling focused on AI cost control — model comparison,
+      cost tracking, and shared TUI helpers

@@ -1,0 +1,93 @@
+# Content for contact.html and study.html.
+
+contact:
+  heading: Get in Touch
+  intro: >-
+    Open to conversations about platform engineering, developer experience, and AI
+    tooling roles — plus collaborations and consulting. Feel free to reach out via
+    any channel below.
+  networks:
+    - name: GitHub
+      key: github
+      description: Open source projects, infrastructure code, automation scripts
+    - name: LinkedIn
+      key: linkedin
+      description: Professional network, recommendations, career history
+  available_for:
+    - Platform engineering & developer experience roles
+    - Full-time senior engineering roles
+    - DevOps/SRE consulting engagements
+    - Cloud architecture reviews & migrations
+    - Infrastructure automation projects
+  response_time: >-
+    I typically respond within 24-48 hours. For urgent matters, please mention
+    "URGENT" in your subject line.
+  quick_links:
+    - {label: View Experience, href: experience.html}
+    - {label: See Projects, href: projects.html}
+  footer_lines:
+    - Based in Pune, India • Available for remote work worldwide
+    - Prefer email for detailed inquiries • GitHub repo for public questions
+
+study:
+  heading: Writing & Professional Profiles
+  intro: >-
+    Connect with me across platforms. I share technical insights, open-source
+    contributions, and professional updates.
+  groups:
+    - title: 💼 Professional Networks
+      profiles:
+        - name: LinkedIn
+          icon: "💼"
+          url: https://www.linkedin.com/in/vijay-mourya/
+          subtitle: Professional network & career updates
+          description: >-
+            Connect for professional networking, recommendations, and career
+            opportunities.
+        - name: GitHub
+          icon: "💻"
+          url: https://github.com/vijayrmourya
+          subtitle: Open source & code repositories
+          description: >-
+            Infrastructure code, Terraform modules, automation scripts, and
+            open-source contributions.
+    - title: ✍️ Technical Writing & Content
+      profiles:
+        - name: Medium
+          icon: "📝"
+          url: https://medium.com/@vjmourya
+          subtitle: Technical articles & tutorials
+          description: >-
+            Deep dives on AWS, DevOps, Kubernetes, AI, serverless architecture, and
+            cloud infrastructure.
+        - name: Dev.to
+          icon: "👨‍💻"
+          url: https://dev.to/vjmourya
+          subtitle: Developer community & articles
+          description: >-
+            Cross-posted tutorials, technical walkthroughs, and discussions with the
+            developer community.
+  learning:
+    title: 🎓 Learning & Certifications
+    profiles:
+      - name: Credly
+        icon: "🏆"
+        url: https://www.credly.com/users/vijay-mourya/badges#credly
+        subtitle: Verified badges & certifications
+        description: AWS certifications and professional badges with verification.
+      - name: AWS Skill Builder
+        icon: "☁️"
+        url: https://skillsprofile.skillbuilder.aws/user/vjmourya/certification-badges
+        subtitle: Skill profile & certification badges
+        description: AWS training completions, skill badges, and learning paths.
+      - name: Credentials
+        icon: "🏅"
+        url: certifications.html
+        subtitle: View all professional credentials
+        description: Certified Kubernetes Administrator, AWS certifications, and credential badges.
+  latest_posts:
+    title: 📝 Latest from Medium
+    intro: >-
+      Recent technical articles on AWS, DevOps, Kubernetes, AI, and cloud
+      infrastructure.
+  footer_text: Connect with me on any platform • Open to collaborations and discussions

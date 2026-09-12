@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Interactive tool to add a new badge certification to badge_certifications.yaml
+Interactive tool to add a new badge certification to data/badges.yaml
 """
 
 import yaml
@@ -38,7 +38,7 @@ def get_date_input(prompt, required=False):
 
 def main():
     script_dir = Path(__file__).parent
-    yaml_path = script_dir / 'badge_certifications.yaml'
+    yaml_path = script_dir.parent / 'data' / 'badges.yaml'
 
     print("\n" + "="*60)
     print("🏆 Add New Badge Certification")

@@ -45,74 +45,78 @@ python3 -m http.server 8000
 
 ## 🛠️ Automation Tools
 
-All content is managed through YAML files + Python automation:
+Every page is generated from YAML in `data/` through Jinja2 templates in
+`templates/`. **The `*.html` files in the repo root are build output — don't edit
+them by hand.**
 
-### 📛 Badge Certifications (Professional Certs)
-
-```bash
-# Or edit YAML directly
-vim tools/badge_certifications.yaml
-python3 tools/generate_badge_certifications.py
-```
-
-**Add badge images:** Download from Credly/Coursera and save to `assets/badges/`
-
-### 📜 Course Certificates (PDF-based)
+### One command per workflow
 
 ```bash
-# Or edit YAML directly
-vim tools/certificates.yaml
-python3 tools/generate_certificates_from_yaml.py
+make site      # validate + rebuild every page   (same steps as build.yml)
+make medium    # refresh Medium posts            (mirrors fetch_medium.yml)
+make quality   # html-validate + link check      (build.yml runs this too)
+
+make serve     # build, then preview locally
+make check     # everything CI runs, before you push
+make help      # list all targets
 ```
 
-**Add PDFs:** Place PDFs in `assets/certificates/{Category}/`
+The workflows call the underlying scripts directly, so CI never depends on make.
 
 ### 💼 Work Experience
 
 ```bash
-# Or edit YAML directly
-vim tools/experience.yaml
-python3 tools/generate_experience.py
+vim data/experience.yaml
+make site
 ```
 
-### 📝 Medium Posts
+### 📛 Badge Certifications
 
 ```bash
-python3 tools/fetch_medium.py
+vim data/badges.yaml        # or: python3 tools/add_badge_certification.py
+make site
 ```
+
+**Add badge images:** download from Credly/Coursera into `assets/badges/`
+
+### 🏠 Homepage, projects, services, contact
+
+```bash
+vim data/home.yaml          # hero, metrics, logo strip, "Currently Building"
+vim data/projects.yaml      # projects page
+vim data/services.yaml      # services page
+vim data/pages.yaml         # contact + writing pages
+vim data/site.yaml          # identity, nav, SEO, per-page titles
+make site
+```
+
+See `tools/README.md` for the full schema reference.
 
 ---
 
 ## 🤖 GitHub Actions Workflows
 
-**Automated Workflows** for content management:
+1. **Build & deploy site** (`build.yml`) — on push
+   - Runs when `data/`, `templates/`, `tools/`, `assets/`, `styles.css` or `scripts.js` change
+   - Validates data → builds pages → `html-validate` → link check → deploys to GitHub Pages
+   - Manual trigger: available
 
-1. **Update Badge Certifications** - Triggered on push
-   - Runs when: `badge_certifications.yaml`, generator script, or badges change
-   - Generates: `assets/badge_certifications.json`
-   - Manual trigger: Available
+2. **Fetch Medium Posts** (`fetch_medium.yml`) — daily at 06:00 UTC
+   - Refreshes `assets/medium_posts.json` and commits it, which triggers a rebuild
+   - Manual trigger: available
 
-2. **Update Course Certificates** - Triggered on push
-   - Runs when: `certificates.yaml`, generator script, or certificates change
-   - Generates: `assets/certificates.json`
-   - Manual trigger: Available
+Both workflows share the `portfolio-pipeline` concurrency group, so they **queue
+instead of running in parallel**.
 
-3. **Update Experience** - Triggered on push
-   - Runs when: `experience.yaml` or generator script changes
-   - Generates: `experience.html`
-   - Manual trigger: Available
-
-4. **Fetch Medium Posts** - Scheduled daily
-   - Runs: Daily at 6:00 AM UTC
-   - Fetches: Latest posts from Medium RSS feed
-   - Updates: `assets/medium_posts.json`
-   - Manual trigger: Available
+> **Pages deployment:** generated HTML is not committed. The site is published
+> from a CI artifact, so Settings → Pages → Source must be set to
+> **GitHub Actions**.
 
 **Benefits:**
-- Path-specific triggers (efficient resource usage)
-- Immediate updates on content changes
-- Clean commit messages with item counts
-- `[skip ci]` prevents workflow loops
+- Repository holds only source — no generated files to review in diffs
+- Data validated before build, so a typo fails fast instead of shipping
+- Quality gates run before deploy, not after
+- Serialised pipeline avoids racing deploys
 
 ---
 
@@ -120,23 +124,35 @@ python3 tools/fetch_medium.py
 
 ```
 vijayrmourya.github.io/
-├── *.html                        # Website pages
-├── scripts.js                    # Dynamic content rendering
-├── styles.css                    # Global styling
+├── Makefile                      # one target per workflow
+├── 404.html                      # hand-maintained redirect stub (committed)
+├── scripts.js                    # dynamic content rendering
+├── styles.css                    # global styling
+├── data/                         # single source of truth
+│   ├── site.yaml                 # identity, nav, SEO, page metadata
+│   ├── home.yaml                 # homepage sections
+│   ├── experience.yaml           # roles, achievements, skills, stats
+│   ├── projects.yaml             # projects page
+│   ├── services.yaml             # services page
+│   ├── pages.yaml                # contact + writing pages
+│   └── badges.yaml               # credential badges
+├── templates/
+│   ├── base.html.j2              # nav, header, footer, meta (defined once)
+│   └── <page>.html.j2            # one per page
 ├── assets/
-│   ├── badges/                   # Certification badge images
-│   ├── certificates/             # PDF certificates by category
-│   ├── badge_certifications.json # Auto-generated
-│   ├── certificates.json         # Auto-generated
-│   └── medium_posts.json         # Auto-generated
+│   ├── badges/                   # certification badge images
+│   ├── logos/                    # technology logos
+│   └── medium_posts.json         # refreshed daily by CI
 ├── tools/
-│   ├── badge_certifications.yaml # Badge certs config
-│   ├── certificates.yaml         # Course certs config
-│   ├── experience.yaml           # Experience config
-│   ├── generate_*.py             # Generator scripts
-│   └── fetch_medium.py           # Medium RSS fetcher
+│   ├── build.py                  # renders every page
+│   ├── validate.py               # data validation
+│   ├── fetch_medium.py           # Medium RSS fetcher
+│   └── README.md                 # schema reference
 └── .github/workflows/            # CI/CD automation
 ```
+
+Generated pages (`index.html`, `experience.html`, and the rest) are gitignored —
+run `make site` to produce them locally.
 
 ---
 

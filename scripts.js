@@ -50,106 +50,6 @@ function renderMediumPosts(targetId='medium-posts') {
     });
 }
 
-// Load and render certificates
-function renderCertificates() {
-  const summaryContainer = document.getElementById('certificates-summary');
-  const listContainer = document.getElementById('certificates-list');
-
-  if (!summaryContainer || !listContainer) return;
-
-  fetch('assets/certificates.json')
-    .then(r => r.ok ? r.json() : Promise.reject('no json'))
-    .then(data => {
-      // Render category summary cards
-      const categories = data.categories || {};
-      const summaryGrid = summaryContainer.querySelector('.grid');
-
-      summaryGrid.innerHTML = Object.entries(categories).map(([key, cat]) => `
-        <div class="card" style="text-align:center;padding:16px;cursor:pointer" data-cert-category="${escapeHtml(key)}" role="button" tabindex="0">
-          <div style="font-size:2rem;margin-bottom:8px">${escapeHtml(cat.icon)}</div>
-          <div style="font-weight:600;font-size:1.2rem;color:${escapeHtml(cat.color)}">${escapeHtml(cat.count)}</div>
-          <div class="small" style="margin-top:4px">${escapeHtml(cat.display_name)}</div>
-        </div>
-      `).join('');
-
-      // Render full certificate list by category
-      listContainer.innerHTML = Object.entries(categories).map(([key, cat]) => `
-        <div id="cert-category-${key}" style="margin-bottom:40px">
-          <h3 style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-            <span style="font-size:1.5rem">${escapeHtml(cat.icon)}</span>
-            ${escapeHtml(cat.display_name)}
-            <span class="small" style="color:var(--muted);font-weight:normal">(${escapeHtml(cat.count)} certificates)</span>
-          </h3>
-          <div class="grid">
-            ${cat.certificates.map(cert => `
-              <a href="${safeUrl(cert.path, { allowRelative: true })}" target="_blank" rel="noopener" class="card" style="display:block;text-decoration:none;padding:20px;transition:all 0.3s">
-                <div style="display:flex;align-items:flex-start;gap:12px">
-                  <div style="font-size:2rem;opacity:0.6;flex-shrink:0">📄</div>
-                  <div style="flex:1;min-width:0">
-                    <div style="font-weight:600;font-size:1.05rem;color:#e6eef8;margin-bottom:8px;line-height:1.4;word-wrap:break-word">${escapeHtml(cert.title)}</div>
-                    <div class="small" style="color:var(--accent);font-weight:600">${escapeHtml(cert.provider)}</div>
-                  </div>
-                </div>
-              </a>
-            `).join('')}
-          </div>
-        </div>
-      `).join('');
-      summaryGrid.querySelectorAll('[data-cert-category]').forEach(card => {
-        const handleActivate = () => scrollToCertCategory(card.dataset.certCategory);
-        card.addEventListener('click', handleActivate);
-        card.addEventListener('keydown', event => {
-          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); handleActivate(); }
-        });
-      });
-    })
-    .catch(err => {
-      console.warn('certificates load failed', err);
-      listContainer.innerHTML = '<div class="small">Unable to load certificates. Please check the certificates.json file.</div>';
-    });
-}
-
-// Scroll to specific certificate category
-function scrollToCertCategory(categoryKey) {
-  const element = document.getElementById(`cert-category-${categoryKey}`);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // Highlight briefly
-    element.style.transition = 'background 0.3s';
-    element.style.background = 'rgba(96,165,250,0.1)';
-    element.style.borderRadius = '8px';
-    element.style.padding = '16px';
-    setTimeout(() => {
-      element.style.background = '';
-      element.style.padding = '';
-    }, 1500);
-  }
-}
-
-// Render certificate summary (for homepage)
-function renderCertificatesSummary() {
-  const container = document.getElementById('certificates-summary-home');
-  if (!container) return;
-
-  fetch('assets/certificates.json')
-    .then(r => r.ok ? r.json() : Promise.reject('no json'))
-    .then(data => {
-      const categories = data.categories || {};
-      const grid = container.querySelector('.grid');
-
-      grid.innerHTML = Object.entries(categories).map(([key, cat]) => `
-        <a href="certifications.html#cert-category-${key}" class="card" style="text-align:center;padding:16px;display:block;text-decoration:none;transition:all 0.3s">
-          <div style="font-size:2rem;margin-bottom:8px">${cat.icon}</div>
-          <div style="font-weight:600;font-size:1.2rem;color:${cat.color}">${cat.count}</div>
-          <div class="small" style="margin-top:4px;color:#e6eef8">${cat.display_name}</div>
-        </a>
-      `).join('');
-    })
-    .catch(err => {
-      console.warn('certificates summary load failed', err);
-    });
-}
-
 // Load and render badge certifications
 function renderBadgeCertifications() {
   const certsGrid = document.getElementById('credentials-certificates-grid');
@@ -222,7 +122,7 @@ function renderBadgeCertifications() {
     })
     .catch(err => {
       console.warn('badge certifications load failed', err);
-      const errMsg = '<div class="small" style="color:var(--muted);padding:20px;text-align:center;grid-column:1/-1;">Configure your certifications in tools/badge_certifications.yaml</div>';
+      const errMsg = '<div class="small" style="color:var(--muted);padding:20px;text-align:center;grid-column:1/-1;">Configure your certifications in data/badges.yaml</div>';
       if (certsGrid) certsGrid.innerHTML = errMsg;
       if (badgesGrid) badgesGrid.innerHTML = errMsg;
     });
@@ -276,7 +176,7 @@ function renderBadgeCertificationsSummary() {
     })
     .catch(err => {
       console.warn('badge certifications summary load failed', err);
-      container.innerHTML = '<div class="small" style="color:var(--muted);padding:20px;text-align:center;">Configure your certifications in tools/badge_certifications.yaml</div>';
+      container.innerHTML = '<div class="small" style="color:var(--muted);padding:20px;text-align:center;">Configure your certifications in data/badges.yaml</div>';
     });
 }
 
@@ -293,12 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Automatically render Medium posts if container exists
   renderMediumPosts();
-
-  // Automatically render certificates if container exists
-  renderCertificates();
-
-  // Render certificate summary on homepage
-  renderCertificatesSummary();
 
   // Render badge certifications if containers exist
   renderBadgeCertifications();

@@ -1,0 +1,153 @@
+# Content for services.html.
+
+hero:
+  title: Services & Expertise
+  subtitle: How I Can Help Your Team
+  intro: >-
+    Platform engineer with seven years of experience building high-scale cloud
+    infrastructure, specializing in multi-cloud environments spanning 500+ accounts.
+    Accomplished in co-architecting multi-cloud Golden OS Image pipelines, designing
+    EKS/GKE solutions to handle thousands of weekly jobs, and engineering end-to-end
+    serverless architectures across AWS and GCP. Leverages AI as a driver for
+    operational excellence—implementing smart logic to reduce operational costs and
+    streamline project execution.
+
+core_services:
+  - icon: "🏗️"
+    title: Cloud Platform Engineering
+    description: >-
+      Design and implementation of resilient, cost-optimized multi-cloud infrastructure
+      on AWS and GCP. Specializing in hardened OS Image pipelines supporting 500+ AWS
+      accounts and 100+ GCP accounts.
+    bullets:
+      - Multi-cloud architecture (AWS, GCP)
+      - Hardened OS Image pipelines (Packer, Ansible)
+      - Enterprise-scale AWS Account management & governance
+      - Cost optimization and FinOps
+      - Disaster recovery and high availability design
+
+  - icon: "🚢"
+    title: Kubernetes & Container Orchestration
+    description: >-
+      Production-grade Kubernetes cluster design (EKS, GKE, k3s) with strict tenant
+      isolation. Expertise in supporting complex KEDA-driven workflows and large-scale
+      runner pools for CI/CD.
+    bullets:
+      - EKS/GKE cluster design and deployment
+      - Tenant isolation and IAM hardening for K8s
+      - KEDA-based autoscaling for complex workflows
+      - Helm chart development and management
+      - GitOps workflows with ArgoCD/GitLab
+      - Observability and monitoring (CloudWatch, Grafana)
+
+  - icon: "⚡"
+    title: CI/CD Platform Engineering
+    description: >-
+      End-to-end pipeline engineering supporting over 1,000 weekly CI jobs. Experienced
+      in zero-downtime migrations from legacy systems (GitLab to GitHub).
+    bullets:
+      - Scalable GitLab/GitHub CI/CD infrastructure
+      - Automated release management & reporting
+      - Terraform-based self-service pipelines
+      - Packer-based hardened image baking
+      - Cross-platform codebase migrations
+      - Security scanning integration (Trivy, SonarQube)
+
+  - icon: "☁️"
+    title: Event-Driven Serverless Architecture
+    description: >-
+      High-scale serverless workflows using AWS Lambda, EventBridge, and SQS.
+      Engineered automated patching for 1,000+ instances monthly across 500+ accounts.
+    bullets:
+      - Serverless patching & governance services
+      - S3 → Lambda → DynamoDB data pipelines
+      - EventBridge event-driven automation
+      - Step Functions for complex orchestrations
+      - High-throughput data ingestion & indexing
+      - Serverless security & IAM role hardening
+
+  - icon: "🤖"
+    title: AI Tooling & Intelligent Automation
+    description: >-
+      Leveraging LLMs and agents to drive operational excellence. Specialized in
+      integrating generative AI into developer workflows for code review, advanced
+      debugging, and resource management.
+    bullets:
+      - Autonomous code-review agents (ONA)
+      - LLM-integrated CLI tools for advanced debugging
+      - RAG pipeline implementation for documentation portals
+      - Data & prompt engineering for log processing
+      - Smart resource management via Amazon Bedrock
+      - AI-driven cost analysis and project planning
+
+  - icon: "📐"
+    title: Architecture Design & Documentation
+    description: >-
+      Expert service architecture design and comprehensive technical documentation.
+      Create clear, detailed design documents and service documentation that enables
+      team autonomy and ensures successful implementation.
+    bullets:
+      - Service architecture and design document drafting
+      - Technical specification creation
+      - Detailed service documentation and runbooks
+      - API documentation and integration guides
+      - Knowledge base and wiki maintenance
+      - Diagram creation (C4, flowcharts, architecture diagrams)
+
+  - icon: "🎓"
+    title: Training & Workshops
+    description: >-
+      Customized training sessions and workshops for development teams on platform
+      engineering best practices, cloud technologies, and infrastructure automation.
+      Experience presenting to large audiences (200+ attendees).
+    bullets:
+      - DevOps fundamentals and culture
+      - Docker and Kubernetes workshops
+      - Terraform Infrastructure as Code training
+      - CI/CD pipeline best practices
+      - Cloud security and compliance
+      - Live service demonstrations and presentations
+
+how_i_work:
+  - title: 🔍 Assessment
+    description: >-
+      Start with understanding your current infrastructure, pain points, and business
+      goals. Identify quick wins and long-term improvements.
+  - title: 📋 Planning
+    description: >-
+      Design architecture and create detailed implementation roadmap with clear
+      milestones, timelines, and success metrics.
+  - title: 🛠️ Implementation
+    description: >-
+      Execute the plan with iterative development, regular reviews, and continuous
+      feedback. Document everything for knowledge transfer.
+  - title: 📚 Knowledge Transfer
+    description: >-
+      Ensure your team is empowered to maintain and evolve the infrastructure through
+      documentation, training, and hands-on support.
+
+engagement_models:
+  - title: 💼 Consulting Projects
+    description: >-
+      Fixed-scope projects for specific deliverables like cloud migration, Kubernetes
+      cluster setup, or CI/CD pipeline implementation. Clear timeline and outcomes.
+    best_for: Well-defined projects with specific goals
+  - title: 🔄 Retainer Services
+    description: >-
+      Ongoing support and consultation on a monthly retainer basis. Regular architecture
+      reviews, optimization recommendations, and on-demand problem solving.
+    best_for: Teams needing continuous platform expertise
+  - title: 👨‍💻 Contract Roles
+    description: >-
+      Embedded team member for 3-12 month engagements. Full-time dedication to your
+      projects, working alongside your engineering team.
+    best_for: Major transformations or team augmentation
+
+cta:
+  title: Let's Discuss Your Project
+  text: >-
+    Whether you need help with a specific challenge or want to discuss a longer-term
+    engagement, I'm here to help. Reach out to discuss how we can work together.
+  buttons:
+    - {label: "📧 Get in Touch", href: contact.html, style: cta cta-primary}
+    - {label: View Experience, href: experience.html, style: cta cta-secondary}

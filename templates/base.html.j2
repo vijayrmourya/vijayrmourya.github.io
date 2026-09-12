@@ -1,0 +1,83 @@
+{#
+  Base layout for every page. Pages set `page_key` and override the `content` block.
+  Head metadata, header, navigation, and footer are defined once here.
+#}
+{%- set page = site.pages[page_key] -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description | trim }}">
+    <meta name="keywords" content="{{ site.seo.keywords | join(', ') }}">
+    <meta name="author" content="{{ site.identity.name }}">
+
+    <link rel="canonical" href="{{ site.identity.base_url }}{% if page_key != 'index' %}/{{ page_key }}.html{% endif %}">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <meta name="geo.region" content="{{ site.identity.location.geo_region }}">
+    <meta name="geo.placename" content="{{ site.identity.location.city }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ (page.get('social_description') or page.description) | trim }}">
+    <meta property="og:url" content="{{ site.identity.base_url }}">
+    <meta property="og:image" content="{{ site.seo.og_image }}">
+    <meta property="og:image:width" content="{{ site.seo.og_image_width }}">
+    <meta property="og:image:height" content="{{ site.seo.og_image_height }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ (page.get('social_description') or page.description) | trim }}">
+
+    <link rel="icon" type="image/svg+xml" href="{{ site.identity.favicon }}">
+{%- if page_key == 'index' %}
+
+    <script type="application/ld+json">
+{{ json_ld }}
+    </script>
+{%- endif %}
+
+    <link rel="stylesheet" href="styles.css">
+{%- block head_extra %}{% endblock %}
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="brand">
+            <img src="{{ site.identity.avatar }}" alt="{{ site.identity.initials }}" class="logo"
+                 style="width:56px;height:56px;border-radius:12px;">
+            <div>
+                <div class="title">{{ site.identity.name }}</div>
+                <div class="small">{{ page.get('header_subtitle') or site.identity.short_tagline }}</div>
+            </div>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+{%- for item in site.nav %}
+            <a href="{{ item.href }}"{% if item.key == page_key %} class="active"{% endif %}>{{ item.label }}</a>
+{%- endfor %}
+        </nav>
+
+        <div class="mobile-menu">
+            <select id="mobile-nav">
+{%- for item in site.nav %}
+                <option{% if item.key == page_key %} selected{% endif %} value="{{ item.href }}">{{ item.label }}</option>
+{%- endfor %}
+            </select>
+        </div>
+    </header>
+
+    <main>
+{% block content %}{% endblock %}
+
+        <footer class="footer">
+            <div class="small">{% block footer %}{{ site.footer.text }}{% endblock %}</div>
+        </footer>
+    </main>
+</div>
+<script src="scripts.js"></script>
+</body>
+</html>

@@ -4,14 +4,23 @@ Interactive Experience Addition Tool
 Helps you add new work experience to the portfolio website
 """
 
+import subprocess
+import sys
+
 import yaml
 from pathlib import Path
 from datetime import datetime
 
 
+def rebuild_site():
+    """Run the site build so generated HTML reflects the YAML changes."""
+    build = Path(__file__).parent / 'build.py'
+    subprocess.run([sys.executable, str(build)], check=True, cwd=build.parent.parent)
+
+
 def load_experience_config():
     """Load current experience configuration"""
-    config_path = Path(__file__).parent / 'experience.yaml'
+    config_path = Path(__file__).parent.parent / 'data' / 'experience.yaml'
 
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
@@ -125,9 +134,8 @@ def add_new_experience():
     print("✅ Experience added successfully!")
 
     # Generate HTML
-    print("\n🔨 Generating experience.html...")
-    import generate_experience
-    generate_experience.main()
+    print("\n🔨 Rebuilding site...")
+    rebuild_site()
 
     print("\n" + "="*60)
     print("✨ DONE! Your new experience has been added.")
@@ -167,9 +175,8 @@ def update_existing_experience():
     # Save and regenerate
     save_experience_config(config, config_path)
 
-    print("\n🔨 Regenerating experience.html...")
-    import generate_experience
-    generate_experience.main()
+    print("\n🔨 Rebuilding site...")
+    rebuild_site()
 
     print("\n✅ Experience updated successfully!")
 
@@ -182,7 +189,7 @@ def main():
     print("\nWhat would you like to do?")
     print("  1. Add new experience")
     print("  2. Update existing experience")
-    print("  3. Regenerate experience.html from YAML")
+    print("  3. Rebuild the site from YAML")
     print("  4. Exit")
 
     choice = get_input("\nChoice (1-4)", "1")
@@ -192,8 +199,7 @@ def main():
     elif choice == '2':
         update_existing_experience()
     elif choice == '3':
-        import generate_experience
-        generate_experience.main()
+        rebuild_site()
     elif choice == '4':
         print("👋 Goodbye!")
     else:

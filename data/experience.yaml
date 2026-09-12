@@ -1,0 +1,233 @@
+# Experience Configuration File
+# Last updated: 2026-04-20
+#
+# Instructions:
+#   1. Update existing entries or add new experiences below
+#   2. Run: python3 tools/generate_experience.py
+#   3. The script will automatically update experience.html
+
+experiences:
+  - id: roche
+    company: Roche Information Solutions India
+    location: Pune, India
+    role: DevOps Engineer — [Acting] Lead Platform Engineer & Service Owner
+    summary: Internal developer platforms, EKS/GKE, serverless automation, AI tooling
+    start_date: "2023-07"
+    end_date: present
+    duration: Present
+    color: "#60a5fa"
+    order: 1
+    projects:
+      - title: "Technical Leadership & Service Ownership"
+        highlights:
+          - "Acting Team Lead for a globally distributed team of 7 engineers, taken on during a team transformation"
+          - "Helped build the team from the ground up, expanding architectural scope from AWS to multi-cloud"
+          - "Own product roadmap, delivery timelines, and stakeholder management, working closely with the Product Manager to deliver a unified multi-cloud platform to three enterprise stakeholder groups"
+          - "Manage technical hiring and onboarding, including international onboarding conducted in Switzerland"
+          - "Mentor engineers and resolve technical blockers day to day"
+
+      - title: "AI Tooling & Developer Productivity"
+        highlights:
+          - "Developed an autonomous code-review agent using ONA that analyzes pull requests, suggests codebase refactoring, and asks reviewers targeted questions to improve code quality"
+          - "Built an AI-powered CLI with Amazon Bedrock for log analysis, reducing hours of debugging to minutes"
+          - "Wrote custom Python data pipelines that clean, deduplicate, and trim log streams before the LLM call, keeping token costs low while improving accuracy and speed"
+          - "Developed a Proof of Concept RAG pipeline on AWS to enhance the internal documentation portal"
+
+      - title: "Zero-Trust Self-Service IAM & Kubernetes CI/CD Platform"
+        highlights:
+          - "Replaced slow IAM access request tickets with a self-service, Terraform-based control plane where developers obtain temporary or permanent AWS access via OIDC, governed entirely by GitOps MR approvals instead of static keys"
+          - "Architected and developed a centralized, autoscaling GitLab Runner platform on AWS EKS (Fargate + Karpenter) and GCP GKE"
+          - "Delivered tenant-isolated build environments that securely process 1,000+ weekly CI jobs across 5 engineering teams"
+          - "Leading the migration of CI pipelines and codebase from GitLab to GitHub"
+
+      - title: "Centralized Multi-Cloud OS Image Factory & Compute Operations"
+        highlights:
+          - "Co-architected a multi-cloud OS image factory serving 500+ AWS and 100+ GCP accounts, owning the full image lifecycle: build, patch, release, communicate, support"
+          - "Built a fully automated, dynamically generated build, test, and hardening pipeline with automated release notes and stakeholder email communication"
+          - "Engineered pipelines provisioning 5 OS families and 20+ compute variants tailored for Base, EKS, ECS, GKE, Deep Learning, and Parallel Cluster workloads"
+          - "Set up specialized build pipelines for HPC/ParallelCluster and GPU-based Deep Learning images, modifying CIS hardening rules to support Slurm scheduling and complex ML networking"
+          - "Built a serverless AMI usage tracker and automated cleanup process retiring unused images, giving the team compliance visibility and saving roughly $10,000 in cloud storage costs"
+          - "Built self-service pipelines for cross-org image copying and SSM document-based server management"
+          - "POC self-service image-building CLI enabling anyone at Roche to customize an OS image while staying within compliant security standards"
+
+      - title: "Serverless Patching Service for AWS"
+        highlights:
+          - "Architected an event-driven, set-and-forget serverless patching platform (Lambda, EventBridge, SQS) automating monthly updates for 1,000+ EC2 instances across 500+ AWS accounts, reducing one week of manual work to one day"
+          - "Designed advanced governance controls and guardrails with pre/post-patch hooks and patch promotions, automatically filtering out ASG/EKS clusters to prevent disruptive reboots"
+          - "Took the service from MVP to adoption by 10+ product teams"
+          - "Developed a statistics and data processing pipeline tracking adoption metrics, using those insights to drive new feature development based on real user pain points"
+          - "Managed the AWS account management pipeline, implementing Service Control Policies (SCPs) and IAM hardening based on security protocols"
+
+      - title: "Advocacy, Enablement & Communication"
+        highlights:
+          - "Represented Roche at AWS re:Invent 2025 (Las Vegas) and KubeCon 2025 (Hyderabad), working directly with AWS Technical Account Managers (TAMs) to align internal architecture with new cloud features"
+          - "Conduct technical presentations for major platform releases and architecture updates to 200+ technical and business stakeholders"
+          - "Building a documentation hub for the team's services to strengthen team representation and the support model"
+          - "Directed monthly release cycles and recorded technical tutorial videos to streamline team and end-user onboarding"
+          - "Author technical and non-technical documentation and communications for cross-functional alignment"
+    tech_stack: "AWS (EKS, Fargate, Karpenter, Lambda, EventBridge, SQS, Systems Manager, Bedrock, Athena, S3) • GCP (GKE, Cloud Build) • ONA • Claude Code • GitHub Copilot • MCP • Kubernetes • KEDA • Terraform • Terragrunt • OIDC • GitLab CI/CD • GitHub Actions • Packer • Ansible • InSpec • Helm • Docker • Python • Jinja2 • Bash"
+
+  - id: amazon
+    company: Amazon Development Centre India
+    short_name: Amazon Development Centre
+    location: Hyderabad, India
+    role: DevOps engineer, On-Call PoC
+    summary: Serverless workflows, Lambda, S3, DynamoDB
+    start_date: "2022-03"
+    end_date: "2023-06"
+    duration: 1 year 3 months
+    color: "#60a5fa"
+    order: 3
+    projects:
+      - title: "Professional Experience"
+        highlights:
+          - "High-Scale Data Engineering: Designed and implemented high-throughput AWS Lambda workflows to process TB-scale CSV/JSON data from S3"
+          - "Lambda Optimization: Overcame execution timeout constraints by leveraging asynchronous invocation, file indexing, and function chaining to optimize data ingestion into DynamoDB"
+          - "Infrastructure Migration: Orchestrated a large-scale HTTP(s) VIP migration, transitioning legacy infrastructure from NetScaler to AWS native load balancers (ALB/NLB)"
+          - "Migration Strategy: Developed comprehensive rollback and automation strategies, including IAM role design, prerequisite validation, and migration timeline planning"
+          - "Incident Management: Served as the Primary On-Call POC for high-severity incidents, executing mitigation strategies and Root Cause Analysis (RCA) to minimize customer impact"
+          - "Operational Excellence: Authored detailed technical documentation, SOP guide books, and mitigation playbooks using Draw.io, which expedited team onboarding and reduced recurring incidents"
+          - "Observability & Monitoring: Led KPI-driven monitoring initiatives, identifying critical metrics and anomalies to enhance proactive system alerting"
+          - "Serverless Automation: Engineered AWS-based serverless tools for organizational ticket tracking and process automation, improving overall operational scalability"
+          - "Global Collaboration: Partnered with globally distributed teams to conduct system design reviews and ensure production-ready code quality for robust deliverables"
+    tech_stack: "AWS (Lambda, S3, DynamoDB, ALB/NLB, CloudWatch, SNS, SQS) • Python • Draw.io • On-Call Operations • Root Cause Analysis"
+
+  - id: tcs
+    company: Tata Consultancy Services
+    location: Nagpur, India
+    role: DevOps Engineer
+    summary: Jenkins, Docker, Kubernetes, Cloud migration
+    start_date: "2019-07"
+    end_date: "2022-03"
+    duration: 2 years 9 months
+    color: "#60a5fa"
+    order: 4
+    projects:
+      - title: "Professional Experience"
+        highlights:
+          - "Cloud Migration & IaC: Provisioned scalable AWS compute and storage resources using Terraform and CloudFormation to support large-scale cloud migration projects"
+          - "Infrastructure Automation: Automated custom AMI creation and tool-baking processes using Packer and Ansible, ensuring environment consistency across the organization"
+          - "Disaster Recovery (DR) Engineering: Engineered \"point-in-time\" disaster recovery solutions; developed automated failover mechanisms using Jenkins jobs triggered by SQS and Lambda-based monitoring"
+          - "CI/CD Orchestration: Managed robust Jenkins CI/CD pipelines for microservices and Micro Frontends (MFEs), leveraging shared libraries and multibranch pipelines integrated with AWS CLI and SSM"
+          - "Observability & Alerting: Automated infrastructure monitoring using CloudWatch, SNS, and Lambda to ensure high availability and rapid incident response"
+          - "Client Management & SOPs: Facilitated infrastructure knowledge transfers and project updates for clients; authored documentation and SOPs to standardize Change Management and onboarding processes"
+    tech_stack: "AWS (EC2, S3, CloudWatch, SNS, SQS, Lambda) • Terraform • CloudFormation • Jenkins • Packer • Ansible • Docker • Kubernetes • Python • Bash"
+
+# Achievements Section
+achievements:
+  - icon: "🎤"
+    title: Roche representative at AWS re:Invent 2025
+    description: Represented Roche at AWS re:Invent 2025, collaborating with AWS TAMs on service roadmaps.
+
+  - icon: "🏆"
+    title: Technical Excellence
+    description: Multiple internal recognitions for AI tooling innovation and multi-cloud platform leadership.
+
+  - icon: "🤖"
+    title: AI-Assisted Development
+    description: Built an autonomous code-review agent and a Bedrock-backed log analysis CLI used by the engineering team.
+
+  - icon: "📚"
+    title: Documentation &amp; Enablement
+    description: Technical documentation, SOPs, video tutorials, and a documentation hub for global engineering teams.
+
+# Conferences
+conferences:
+  - name: AWS re:Invent 2025
+    icon: "☁️"
+    location: Las Vegas, USA
+
+  - name: KubeCon + CloudNativeCon
+    icon: "🌐"
+    location: India 2025 • Hyderabad
+
+# Skills
+skills:
+  - category: "🤖 AI & Developer Tooling"
+    items:
+      - "Autonomous code-review agents (ONA)"
+      - "LLM Integration (Amazon Bedrock)"
+      - "Claude Code, GitHub Copilot, MCP servers"
+      - "RAG Pipeline implementation"
+      - "Prompt &amp; token-cost engineering for DevOps logs"
+
+  - category: "☁️ Cloud Platforms"
+    items:
+      - "<strong>AWS (Advanced):</strong> EKS, Fargate, Karpenter, Lambda, EventBridge, SQS, Systems Manager, Bedrock, S3, DynamoDB, Athena"
+      - "<strong>GCP (Intermediate):</strong> GKE, Compute Engine, Cloud Functions, Cloud Storage"
+      - "Multi-cloud architecture across 500+ AWS and 100+ GCP accounts"
+      - "Cloud cost optimization"
+
+  - category: "🏗️ Infrastructure as Code &amp; Imaging"
+    items:
+      - "Terraform (modules, remote state, workspaces)"
+      - "Terragrunt"
+      - "Ansible (playbooks, roles, vault)"
+      - "Packer (hardened OS image factories, CIS hardening)"
+      - "InSpec (compliance testing)"
+      - "Helm (chart development &amp; management)"
+      - "CloudFormation"
+
+  - category: "🚀 CI/CD &amp; Platform Engineering"
+    items:
+      - "GitLab CI/CD (KEDA, tenant-isolated autoscaling runners)"
+      - "GitHub Actions &amp; GitLab → GitHub migration"
+      - "ArgoCD / GitOps practices"
+      - "Security scanning (Trivy, SonarQube)"
+      - "Self-service developer platforms"
+
+  - category: "🐳 Containers &amp; Orchestration"
+    items:
+      - "Kubernetes / CKA (EKS, GKE, strict tenant isolation)"
+      - "EKS on Fargate with Karpenter autoscaling"
+      - "KEDA (event-driven autoscaling)"
+      - "Docker (multi-stage optimization)"
+      - "HPC / ParallelCluster (Slurm) and GPU Deep Learning images"
+      - "Container security &amp; best practices"
+
+  - category: "🔒 Security &amp; Governance"
+    items:
+      - "Zero-trust IAM &amp; OIDC federation"
+      - "Self-service access control planes"
+      - "Service Control Policies (SCPs) &amp; IAM hardening"
+      - "CIS hardening &amp; compliance automation"
+      - "Patch governance with pre/post-patch hooks"
+
+  - category: "📊 Observability &amp; Reliability"
+    items:
+      - "Prometheus &amp; Grafana"
+      - "CloudWatch (metrics, logs, alarms)"
+      - "KPI-driven alerting &amp; Root Cause Analysis"
+      - "SRE practices &amp; SLA/SLO management"
+
+  - category: "📚 Documentation &amp; Communication"
+    items:
+      - "Technical and non-technical documentation"
+      - "Documentation portals &amp; support models"
+      - "Technical presentations to 200+ stakeholders"
+      - "Tutorial video production (OBS Studio)"
+      - "Architecture diagrams (Lucidchart, Draw.io)"
+
+# Career highlights stats
+career_stats:
+  - value: "7"
+    label: Years of Experience
+    color: "#60a5fa"
+
+  - value: "3"
+    label: Major Organizations
+    color: "#4fd1c5"
+
+  - value: "1,000+"
+    label: Weekly CI Jobs
+    color: "#60a5fa"
+
+  - value: "500+"
+    label: AWS Accounts Served
+    color: "#4fd1c5"
+
+# Page metadata
+metadata:
+  page_title: "Work Experience — Vijay Mourya"
+  hero_title: "Professional Experience"
+  hero_subtitle: "Seven years building internal developer platforms, multi-cloud infrastructure, and production-grade CI/CD systems across AWS and GCP."

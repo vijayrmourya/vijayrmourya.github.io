@@ -1,0 +1,37 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+      <section class="card hero-card">
+        <h1>{{ projects.hero.title }}</h1>
+        <p class="small">{{ projects.hero.intro }} {{ projects.hero.cta_prefix }} <a href="{{ site.links.github }}" target="_blank" rel="noopener">{{ projects.hero.cta_label }}</a>.</p>
+
+        <div class="section">
+{%- for group in projects.groups %}
+          <h2{% if group.get('margin_top') %} style="margin-top:32px"{% endif %}>{{ group.title }}</h2>
+          <div class="grid projects-list" style="grid-template-columns:1fr">
+{%- for project in group.projects %}
+            <a href="{{ project.url }}" target="_blank" rel="noopener" class="card">
+              <strong>{{ project.name }}</strong>
+              <div class="small" style="margin-top:8px">
+{%- if project.get('body') %}
+                {{ project.body }}
+{%- else %}
+                <strong>Problem:</strong> {{ project.problem }}<br>
+                <strong>Approach:</strong> {{ project.approach }}<br>
+                <strong>Demonstrates:</strong> {{ project.demonstrates }}
+{%- endif %}
+              </div>
+              <div class="small" style="margin-top:8px;color:var(--accent)">
+                {% for tag in project.tags %}#{{ tag }}{% if not loop.last %} {% endif %}{% endfor %}
+              </div>
+            </a>
+{%- endfor %}
+          </div>
+{%- endfor %}
+        </div>
+      </section>
+{% endblock %}
+
+{% block footer %}
+          {{ projects.footer_note }} <a href="contact.html">Get in touch</a> or open an issue on GitHub.
+{%- endblock %}

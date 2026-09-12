@@ -1,0 +1,104 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+        <section class="hero-card">
+            <div>
+                <h1 style="margin:0 0 8px 0; font-size:1.8rem;">{{ experience.metadata.hero_title }}</h1>
+                <p class="small" style="margin:0;">{{ experience.metadata.hero_subtitle }}</p>
+            </div>
+        </section>
+
+        <section class="section" style="margin-top:24px;">
+            <h2>Career Highlights</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px;">
+{%- for stat in experience.career_stats %}
+                <div class="card metric-card" style="padding:14px 10px;">
+                    <div class="metric-value" style="font-size:1.6rem; color:{{ stat.color }};">{{ stat.value }}</div>
+                    <div class="small">{{ stat.label }}</div>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section" style="margin-top:32px;">
+            <h2>Key Achievements</h2>
+            <div class="grid" style="gap:12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+{%- for achievement in experience.achievements %}
+                <div class="card" style="padding:16px;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                        <span style="font-size:1.8rem;">{{ achievement.icon }}</span>
+                        <strong style="font-size:0.95rem;">{{ achievement.title }}</strong>
+                    </div>
+                    <p class="small" style="margin:0;">{{ achievement.description }}</p>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section" style="margin-top:32px;">
+            <h2>Conference Attendance</h2>
+            <div class="grid" style="gap:12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+{%- for conference in experience.conferences %}
+                <div class="card" style="padding:16px; text-align:center;">
+                    <div style="font-size:2rem; margin-bottom:8px;">{{ conference.icon }}</div>
+                    <strong style="font-size:0.95rem;">{{ conference.name }}</strong>
+                    <div class="small" style="margin-top:4px; color:var(--muted);">{{ conference.location }}</div>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section" style="margin-top:32px;">
+            <h2>Career Timeline</h2>
+            <p class="small" style="color:var(--muted);">Detailed work experience in chronological order (most recent first)</p>
+{%- for job in experience.experiences | sort(attribute='order') %}
+{%- set slug = job.company.lower() | replace(' ', '-') | replace('&', 'and') %}
+            <div class="card" id="{{ slug }}" style="padding:20px; margin-top:16px; border-left:3px solid {{ job.color }};">
+                <div class="row" style="justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <div class="kv" style="font-size:1.05rem;">{{ job.company }}</div>
+                        <div class="small" style="color:var(--muted);">{{ job.location }}</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div class="small">{{ job.start_date | pretty_date }} – {{ job.end_date | pretty_date }}</div>
+                        <div class="small" style="margin-top:4px; color:var(--muted);">{{ job.duration }}</div>
+                    </div>
+                </div>
+
+                <strong style="display:block; margin:16px 0; color:#e6eef8; font-size:1.05rem;">{{ job.role }}</strong>
+
+{%- for project in job.projects %}
+                <div style="margin-top:14px;">
+                    <strong class="small" style="color:#4fd1c5; font-size:0.95rem;">{{ project.title }}</strong>
+                    <ul class="small" style="margin:8px 0 0 18px; line-height:1.8;">
+{%- for highlight in project.highlights %}
+                        <li>{{ highlight }}</li>
+{%- endfor %}
+                    </ul>
+                </div>
+{%- endfor %}
+
+                <div class="small" style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(96,165,250,0.15); color:var(--muted);">
+                    <strong class="small">Tech Stack:</strong>
+                    {{ job.tech_stack }}
+                </div>
+            </div>
+{%- endfor %}
+        </section>
+
+        <section class="section" style="margin-top:32px;">
+            <h2>Complete Technical Skillset</h2>
+            <div class="grid" style="gap:12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+{%- for group in experience.skills %}
+                <div class="card" style="padding:16px;">
+                    <strong style="font-size:0.95rem;">{{ group.category }}</strong>
+                    <ul class="small" style="margin:10px 0 0 18px; line-height:1.8;">
+{%- for item in group['items'] %}
+                        <li>{{ item }}</li>
+{%- endfor %}
+                    </ul>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+{% endblock %}

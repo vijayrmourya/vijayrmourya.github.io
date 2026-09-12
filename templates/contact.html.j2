@@ -1,0 +1,62 @@
+{% extends "base.html.j2" %}
+{% set contact = pages.contact %}
+
+{% block content %}
+    <section class="card hero-card">
+      <h1>{{ contact.heading }}</h1>
+      <p class="small">{{ contact.intro }}</p>
+
+      <div class="section">
+        <h2>📧 Direct Contact</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))">
+          <div class="card">
+            <strong>Email</strong>
+            <div class="small" style="margin-top:8px">
+              <a href="mailto:{{ site.identity.email }}">{{ site.identity.email }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🌐 Professional Networks</h2>
+        <div class="grid">
+{%- for network in contact.networks %}
+          <a href="{{ site.links[network.key] }}" target="_blank" rel="noopener" class="card">
+            <strong>{{ network.name }}</strong>
+            <div class="small">{{ network.description }}</div>
+          </a>
+{%- endfor %}
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>💼 Work Inquiries</h2>
+        <div class="card">
+          <p class="small">
+            <strong>Available for:</strong><br>
+{%- for item in contact.available_for %}
+            • {{ item }}<br>
+{%- endfor %}
+            <br>
+            <strong>Response time:</strong> {{ contact.response_time }}
+          </p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📄 Quick Links</h2>
+        <div class="row">
+{%- for link in contact.quick_links %}
+          <a class="cta" href="{{ link.href }}">{{ link.label }}</a>
+{%- endfor %}
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+{%- for line in contact.footer_lines %}
+        {{ line }}{% if not loop.last %}<br>{% endif %}
+{%- endfor %}
+{%- endblock %}

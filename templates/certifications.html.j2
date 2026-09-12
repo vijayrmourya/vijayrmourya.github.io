@@ -1,0 +1,38 @@
+{% extends "base.html.j2" %}
+
+{% block head_extra %}
+  <style>
+    .badges-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:12px}
+    .badge{background:rgba(255,255,255,0.01);padding:12px;border-radius:10px;text-align:center}
+    .badge img{max-width:140px;height:auto;display:block;margin:0 auto 8px}
+    .issuer{font-size:.9rem;color:var(--muted)}
+    .small-note{font-size:.9rem;color:var(--muted);margin-top:10px}
+  </style>
+{%- endblock %}
+
+{% block content %}
+      <section class="card hero-card">
+        <h1>🏆 Certifications &amp; Credentials</h1>
+        <p class="small">Professional certifications and verified badges from AWS, the Linux Foundation, and other leading platforms.</p>
+
+        <div class="section">
+          <h2>🏆 Professional Credentials</h2>
+          <h3 style="margin-top:24px;margin-bottom:8px;">Certificates</h3>
+          <div id="credentials-certificates-grid" class="badges-grid">
+            <!-- Populated from assets/badge_certifications.json -->
+          </div>
+          <h3 style="margin-top:32px;margin-bottom:8px;">Certified Badges</h3>
+          <div id="credentials-badges-grid" class="badges-grid">
+            <!-- Populated from assets/badge_certifications.json -->
+          </div>
+        </div>
+
+        <div style="margin-top:24px">
+          <a class="cta" href="experience.html">View Full Professional Background →</a>
+        </div>
+      </section>
+{% endblock %}
+
+{% block footer %}
+          All certifications are verifiable through official platforms • Actively pursuing advanced certifications
+{%- endblock %}

@@ -1,0 +1,121 @@
+# Site-wide configuration — identity, navigation, SEO, and per-page metadata.
+# This is the single source of truth for anything that appears on more than one page.
+
+identity:
+  name: Vijay Mourya
+  initials: VM
+  tagline: Platform Engineer — Internal Developer Platforms & AI Tooling
+  # Shown in the site header, where space is tight.
+  short_tagline: Platform Engineer — Developer Platforms & AI Tooling
+  job_title: Senior Platform Engineer
+  description: >-
+    Platform engineer building internal developer platforms and the AI tooling
+    that runs on top of them.
+  avatar: assets/DP/ProfilePicture.png
+  favicon: assets/favicon.svg
+  base_url: https://vijayrmourya.github.io
+  email: vijayrmourya@gmail.com
+  location:
+    city: Pune
+    region: Maharashtra
+    country: IN
+    geo_region: IN-MH
+
+links:
+  linkedin: https://www.linkedin.com/in/vijay-mourya/
+  github: https://github.com/vijayrmourya
+  medium: https://medium.com/@vjmourya
+
+seo:
+  keywords:
+    - Platform Engineering
+    - Internal Developer Platform
+    - Developer Experience
+    - DevOps
+    - AWS
+    - Kubernetes
+    - Terraform
+    - GCP
+    - CI/CD
+    - AI Tooling
+    - Amazon Bedrock
+  og_image: https://vijayrmourya.github.io/assets/social/vijay-mourya-og.png
+  og_image_width: 1730
+  og_image_height: 909
+  knows_about:
+    - Platform Engineering
+    - Internal Developer Platforms
+    - Developer Experience
+    - AWS
+    - Kubernetes
+    - Terraform
+    - GCP
+    - CI/CD
+    - Infrastructure as Code
+    - Amazon Bedrock
+  alumni_of: G.H. Raisoni College of Engineering, Nagpur
+  works_for: Roche
+
+nav:
+  - {label: Home, href: index.html, key: index}
+  - {label: Experience, href: experience.html, key: experience}
+  - {label: Certifications, href: certifications.html, key: certifications}
+  - {label: Projects, href: projects.html, key: projects}
+  - {label: Writing, href: study.html, key: study}
+  - {label: Services, href: services.html, key: services}
+  - {label: Contact, href: contact.html, key: contact}
+
+# Per-page <title>, meta description, and header subtitle.
+pages:
+  index:
+    title: Vijay Mourya — Platform Engineer | Developer Platforms and AI Tooling
+    description: >-
+      Platform engineer building internal developer platforms — OS image factories,
+      self-service access control, and autoscaling CI on Kubernetes — plus the AI
+      tooling that runs on top of them.
+    social_description: >-
+      I build the platforms other engineers ship on — and the AI tooling that runs
+      on top of them.
+  experience:
+    title: Work Experience — Vijay Mourya
+    description: >-
+      Professional experience and career history of Vijay Mourya — platform engineer
+      building internal developer platforms and AI tooling.
+    header_subtitle: Platform Engineer — Developer Platforms & AI Tooling
+  projects:
+    title: Selected Projects — Vijay Mourya
+    description: >-
+      Selected platform engineering, Kubernetes, Amazon Bedrock, and AI tooling
+      projects by Vijay Mourya, platform engineer.
+    header_subtitle: Projects & Repositories
+  certifications:
+    title: Certifications & Badges — Vijay Mourya
+    description: >-
+      Professional certifications, credential badges, and course completion
+      certificates held by Vijay Mourya.
+    header_subtitle: Certifications & Badges
+  services:
+    title: Services — Vijay Mourya
+    description: >-
+      Platform engineering, cloud architecture, and developer experience
+      engagements offered by Vijay Mourya.
+    header_subtitle: Platform Engineer — Developer Platforms & AI Tooling
+  study:
+    title: Writing & Profiles — Vijay Mourya
+    description: >-
+      Technical writing on Medium plus social and professional profiles for
+      Vijay Mourya.
+    header_subtitle: Social Profiles & Content
+  contact:
+    title: Contact — Vijay Mourya
+    description: >-
+      Contact Vijay Mourya — platform engineer working on internal developer
+      platforms, developer experience, and AI tooling.
+    header_subtitle: Get in touch
+  "404":
+    title: Page Not Found — Vijay Mourya
+    description: The page you were looking for could not be found.
+    header_subtitle: Page not found
+
+footer:
+  text: © Vijay Mourya — Built with GitHub Pages

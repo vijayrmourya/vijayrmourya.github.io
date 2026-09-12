@@ -1,0 +1,125 @@
+# Projects shown on projects.html.
+#
+# `groups` render in order. Each project supports either:
+#   - structured fields (problem / approach / demonstrates), or
+#   - a single `body` paragraph
+# `tags` render as the accent-coloured hashtag line.
+
+hero:
+  title: Projects & Portfolio
+  intro: >-
+    A focused selection of open-source infrastructure and AI tooling. Each project
+    demonstrates an engineering decision, not just a technology list.
+  cta_prefix: Explore all code on
+  cta_label: GitHub
+
+groups:
+  - title: 🚀 Selected Projects
+    projects:
+      - name: NTC Credit Risk Analyzer
+        url: https://github.com/vijayrmourya/ntc-portfolios-credit-risk-analyzer
+        problem: >-
+          make credit-risk signals more transparent for new-to-credit underwriting
+          and behavioural auditing.
+        approach: >-
+          an explainable AI diagnostic framework with SHAP-based insights,
+          event-driven design, and an interactive Streamlit experience.
+        demonstrates: applied AI, explainability, and domain-aware product thinking.
+        tags: [Python, CreditRisk, ExplainableAI, SHAP, Streamlit, AWS, EventDriven]
+
+      - name: AI Query Router
+        url: https://github.com/vijayrmourya/query-router-amd-act-ii-hackathon
+        problem: >-
+          route AI tasks to the least expensive model that can still produce a
+          capable answer.
+        approach: >-
+          an autonomous routing agent that selects models at runtime, with Docker,
+          Ollama, and GGUF-based local model support.
+        demonstrates: model selection, token efficiency, and AI cost optimisation.
+        tags: [AIEngineering, ModelRouting, TokenEfficiency, FireworksAI, Ollama, Docker]
+
+      - name: 3-tier Todo API on EKS
+        url: https://github.com/vijayrmourya/3-tier-todo-crud-api-on-eks
+        problem: deploy a repeatable, production-shaped API platform.
+        approach: FastAPI on EKS, ALB ingress, and Terraform-managed infrastructure.
+        demonstrates: Kubernetes delivery, routing, and modular IaC.
+        tags: [AWS, Kubernetes, Terraform, IaC, EKS, FastAPI, ELB, k8s-elb-controller, ModularInfrastructure]
+
+      - name: Stateful AI Chatbot with Amazon Bedrock
+        url: https://github.com/vijayrmourya/stateful-ai-chatbot-with-bedrock
+        problem: preserve useful AI context without uncontrolled token cost.
+        approach: >-
+          FastAPI, Bedrock, MongoDB/DynamoDB persistence, sliding-window trimming,
+          and per-call cost tracking.
+        demonstrates: stateful AI architecture and operational cost control.
+        tags: [AWS, Bedrock, FastAPI, MongoDB, DynamoDB, Chatbot, Python, StatefulAI, CostTracking]
+
+      - name: Bedrock Model Compare
+        url: https://github.com/vijayrmourya/bedrock-model-compare
+        problem: choose foundation models using comparable cost and latency evidence.
+        approach: >-
+          a CLI that runs one prompt against selected Bedrock models and writes a
+          cheapest-first Markdown report.
+        demonstrates: practical FinOps for generative AI.
+        tags: [AWS, model-benchmarking, cost-optimization, ai-tool, Python, boto3, Utilities, SDK, Bedrock, library]
+
+  - title: More Open-source Work
+    margin_top: true
+    projects:
+      - name: Bedrock Cost Tracker Library
+        url: https://github.com/vijayrmourya/bedrock-cost-tracker-lib
+        body: >-
+          A non-invasive Python library for automated Amazon Bedrock cost tracking.
+          Uses a decorator pattern to log token usage and USD cost to a local SQLite
+          database for every call. Integrates with `bedrock-tui-helpers` for real-time
+          pricing lookups and supports per-project cost segregation, making it ideal
+          for monorepos or multi-service environments.
+        tags: [AWS, Bedrock, Python, CostTracking, SQLite, Automation, CloudCost]
+
+      - name: Bedrock TUI Helpers
+        url: https://github.com/vijayrmourya/bedrock-tui-helpers
+        body: >-
+          Shared terminal UI components and Bedrock model data for Python CLI tools —
+          one pricing table, one model catalogue cache, one interactive params wizard,
+          one model picker. This package is the single source of truth for all
+          Bedrock-related terminal tooling in this repo. Both bedrock-model-compare and
+          the chatbot cost tracking depend on it. Add it to any project to get a full
+          model catalogue, pricing, and interactive prompts for free.
+        tags: [AWS, ai-tool, Python, boto3, Utilities, SDK, Bedrock, library]
+
+      - name: Boto3 Helpers
+        url: https://github.com/vijayrmourya/boto3-helpers
+        body: >-
+          Reusable AWS SDK utilities for any Python project — eliminates repetitive
+          boto3.client() calls, centralises region and credential resolution, caches
+          clients at process scope, and provides idiomatic thin wrappers for Bedrock's
+          control-plane and runtime APIs. Install once as an editable sibling package
+          and every project in the repo gets consistent boto3 behaviour, a single
+          mock-injection point for tests, and free connection reuse on warm Lambda
+          invocations.
+        tags: [AWS, Python, boto3, Utilities, SDK, Bedrock, library]
+
+      - name: Multi-stack CloudFormation + Terraform IaC Module
+        url: https://github.com/vijayrmourya/multi-stack-cloudformation-tf-iac-module
+        body: >-
+          A structured AWS infrastructure-as-code reference that demonstrates a hybrid
+          provisioning pattern: Terraform as the orchestration layer driving
+          CloudFormation stacks for core AWS resources. It encapsulates reusable
+          templates for VPC setups, subnet segmentation, compute and storage services,
+          and IAM roles with clean separation of concerns and modular design. This
+          pattern supports production-aligned architecture and clear resource ownership
+          across teams, enabling scalable, maintainable cloud deployments.
+        tags: [AWS, CloudFormation, Terraform, IaC, VPC, EC2, S3, ModularInfrastructure]
+
+      - name: CI-driven Portfolio Platform
+        url: https://github.com/vijayrmourya/ci-driven-portfolio
+        body: >-
+          A fully automated portfolio platform built with static HTML, Python automation
+          scripts, and GitHub Actions. This repository powers my personal site, generating
+          pages and content from YAML configurations and external sources (badges,
+          certifications, blog posts) and deploying via GitHub Pages. Showcases automation,
+          scripting, CI/CD, and platform engineering in a real end-to-end system.
+        tags: [HTML, CSS, JavaScript, Python, GitHubActions, GitHubPages]
+
+footer_note: >-
+  Want to collaborate on a project?

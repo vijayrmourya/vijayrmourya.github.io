@@ -1,0 +1,60 @@
+{% extends "base.html.j2" %}
+{% set study = pages.study %}
+
+{%- macro profile_card(profile) %}
+          <a href="{{ profile.url }}"{% if profile.url.startswith('http') %} target="_blank" rel="noopener"{% endif %} class="card" style="display:block;text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+              <span style="font-size:2.5rem">{{ profile.icon }}</span>
+              <div>
+                <strong style="font-size:1.1rem;color:#e6eef8">{{ profile.name }}</strong>
+                <div class="small" style="color:var(--muted)">{{ profile.subtitle }}</div>
+              </div>
+            </div>
+            <div class="small">
+              {{ profile.description }}
+            </div>
+          </a>
+{%- endmacro %}
+
+{% block content %}
+    <section class="card hero-card">
+      <h1>{{ study.heading }}</h1>
+      <p class="small">{{ study.intro }}</p>
+
+{%- for group in study.groups %}
+      <div class="section">
+        <h2>{{ group.title }}</h2>
+        <div class="grid">
+{%- for profile in group.profiles %}
+{{ profile_card(profile) }}
+{%- endfor %}
+        </div>
+      </div>
+{%- endfor %}
+
+      <div class="section">
+        <h2>{{ study.latest_posts.title }}</h2>
+        <p class="small" style="margin-bottom:16px">
+          {{ study.latest_posts.intro }}
+        </p>
+        <div id="medium-posts" class="grid">
+          <div class="card" style="text-align:center;padding:40px">
+            <div class="small" style="color:var(--muted)">Loading posts…</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>{{ study.learning.title }}</h2>
+        <div class="grid">
+{%- for profile in study.learning.profiles %}
+{{ profile_card(profile) }}
+{%- endfor %}
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+        {{ study.footer_text }}
+{%- endblock %}

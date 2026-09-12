@@ -1,0 +1,172 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+        <section class="hero-card">
+            <div>
+                <h1>{{ home.hero.heading }}</h1>
+                <p class="subtitle">{{ home.hero.subtitle }}</p>
+                <ul class="hero-proof small">
+{%- for point in home.hero.proof %}
+                    <li>{{ point }}</li>
+{%- endfor %}
+                </ul>
+
+                <div class="row cta-group">
+{%- for cta in home.hero.ctas %}
+                    <a class="{{ cta.style }}" href="{{ cta.href }}">{{ cta.label }}</a>
+{%- endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="section" style="margin-top:24px;">
+            <h2 style="font-size:1.3rem; margin-bottom:10px;">Impact &amp; Scale</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)); gap:8px;">
+{%- for metric in home.impact_metrics %}
+                <div class="card metric-card" style="padding:10px 8px;">
+                    <div class="metric-value" style="font-size:1.5rem;">{{ metric.value }}</div>
+                    <div class="small" style="font-size:0.75rem;">{{ metric.label }}</div>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section" style="margin-top:32px">
+            <h2>Professional Experience <small class="label"><a href="experience.html">view detailed timeline &amp; achievements</a></small></h2>
+
+            <div class="grid"
+                 style="gap:12px; margin-top:16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+{%- for job in experience.experiences | sort(attribute='order') %}
+{%- set slug = job.company.lower() | replace(' ', '-') | replace('&', 'and') %}
+                <a href="experience.html#{{ slug }}" style="text-decoration:none;">
+                    <div class="card company-card" style="padding:16px; cursor:pointer; transition: all 0.2s ease; height:100%;"
+                         onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(96,165,250,0.2)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow=''">
+                        <div class="kv">{{ job.get('short_name') or job.company }}</div>
+                        <div class="small" style="margin-top:6px">
+                            <strong>{{ job.role }}</strong><br>
+                            {{ job.start_date | pretty_date }} – {{ job.end_date | pretty_date }}<br>
+                            <span style="color:var(--muted);">{{ job.summary }}</span>
+                        </div>
+                    </div>
+                </a>
+{%- endfor %}
+            </div>
+
+            <div class="skills-block" style="margin-top:16px">
+                <h3 style="margin-bottom:6px; font-size:1rem;">Core Tech Stack <small class="label"><a
+                        href="experience.html">view complete experience</a></small></h3>
+
+                <div class="card logo-wall">
+{%- for tool in home.tech_logos %}
+                    <div class="logo-item">
+                        <img src="assets/logos/{{ tool.logo }}" alt="{{ tool.name }}" loading="lazy">
+                        <span>{{ tool.name }}</span>
+                    </div>
+{%- endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="margin-top:32px">
+            <h2>Certifications &amp; Credentials <small class="label"><a href="certifications.html">view all credentials</a></small></h2>
+
+            <div class="card"
+                 style="padding:24px; background: linear-gradient(135deg, rgba(96,165,250,0.08), rgba(79,209,197,0.05));">
+                <h3 style="margin:0 0 16px 0;">🏆 Professional Credentials</h3>
+
+                <div id="badge-certifications-summary-home"
+                     style="display:grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap:12px; margin-top:12px;">
+                    <div style="text-align:center;">
+                        <div style="width:100%; aspect-ratio:1; background:rgba(255,255,255,0.05); border-radius:6px; display:flex; align-items:center; justify-content:center;">
+                            <span style="font-size:0.8rem; color:var(--muted);">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="small" style="margin-top:16px; text-align:center; color:var(--muted);">
+                    Click on badges to view verification • <a href="certifications.html" style="color:#60a5fa;">See all credentials →</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Achievements</h2>
+
+            <div class="grid" style="gap:12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+{%- for item in home.key_achievements %}
+                <div class="card" style="padding:16px;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                        <span style="font-size:1.8rem;">{{ item.icon }}</span>
+                        <strong style="font-size:0.95rem;">{{ item.title }}</strong>
+                    </div>
+                    <p class="small" style="margin:0;">{{ item.description }}</p>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section style="margin-top:32px">
+            <h2 class="section-title">Latest Technical Writing <small class="label"><a href="study.html">view all on Medium</a></small></h2>
+            <div class="grid">
+{%- for link in home.writing_links %}
+                <a href="{{ link.href }}"{% if link.get('external') %} target="_blank" rel="noopener"{% endif %} class="card">
+                    <strong>{{ link.title }}</strong>
+                    <div class="small">{{ link.description }}</div>
+                    <div class="small" style="margin-top:8px; color:#60a5fa;">{{ link.cta }}</div>
+                </a>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section style="margin-top:18px">
+            <h2 class="section-title">Featured projects <small class="label"><a href="projects.html">see all</a></small></h2>
+            <div class="grid projects-list">
+{%- for item in home.featured_projects %}
+                <a href="{{ item.href }}" class="card">
+                    <strong>{{ item.title }}</strong>
+                    <div class="small">{{ item.description }}</div>
+                </a>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>What I Do Best</h2>
+            <div class="grid">
+{%- for item in home.what_i_do_best %}
+                <div class="card">
+                    <span style="font-size:1.5rem">{{ item.icon }}</span>
+                    <h3>{{ item.title }}</h3>
+                    <p class="small">{{ item.description }}</p>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Conference Attendance</h2>
+
+            <div class="grid" style="gap:12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+{%- for conference in experience.conferences %}
+                <div class="card" style="padding:16px; text-align:center;">
+                    <div style="font-size:2rem; margin-bottom:8px;">{{ conference.icon }}</div>
+                    <strong style="font-size:0.95rem;">{{ conference.name }}</strong>
+                    <div class="small" style="margin-top:4px; color:var(--muted);">{{ conference.location }}</div>
+                </div>
+{%- endfor %}
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="card"
+                 style="background: linear-gradient(135deg, rgba(96,165,250,0.1), rgba(79,209,197,0.05)); border: 1px solid rgba(96,165,250,0.2);">
+                <h3>{{ home.currently_building.heading }}</h3>
+                <ul class="small" style="margin:8px 0 0 20px; line-height:2;">
+{%- for item in home.currently_building['items'] %}
+                    <li>{{ item }}</li>
+{%- endfor %}
+                </ul>
+            </div>
+        </section>
+{% endblock %}

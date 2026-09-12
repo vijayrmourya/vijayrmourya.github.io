@@ -17,7 +17,7 @@ def load_yaml_config(yaml_path):
             return yaml.safe_load(f)
     except FileNotFoundError:
         print(f"❌ Error: YAML config file not found: {yaml_path}")
-        print("Please create tools/badge_certifications.yaml with your certification data")
+        print("Please create data/badges.yaml with your certification data")
         return None
     except yaml.YAMLError as e:
         print(f"❌ Error parsing YAML file: {e}")
@@ -195,7 +195,7 @@ def main():
     # Get paths
     script_dir = Path(__file__).parent
     project_root = script_dir.parent
-    yaml_path = script_dir / 'badge_certifications.yaml'
+    yaml_path = project_root / 'data' / 'badges.yaml'
     badges_dir = project_root / 'assets' / 'badges'
     output_file = project_root / 'assets' / 'badge_certifications.json'
 
@@ -226,7 +226,7 @@ def main():
     print(f"\n✅ Successfully generated: {output_file}")
     print("\n📝 Next Steps:")
     print("   1. Add your actual badge images to assets/badges/")
-    print("   2. Update verification URLs in badge_certifications.yaml")
+    print("   2. Update verification URLs in data/badges.yaml")
     print("   3. Run this script again to regenerate the JSON")
     print("   4. The certifications.html page will auto-load the data")
     print("="*60)
