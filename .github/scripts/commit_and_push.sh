@@ -43,7 +43,8 @@ git commit -m "$COMMIT_MSG"
 
 # Rebase rather than creating a merge commit. If another update touched the same
 # generated file, fail safely and leave the branch unchanged for review.
-git pull --rebase origin "$BRANCH"
+# --autostash: unrelated dirt (e.g. a pending CRLF renormalisation) must not abort the rebase.
+git pull --rebase --autostash origin "$BRANCH"
 git push origin "$BRANCH"
 
 echo "Changes pushed"
