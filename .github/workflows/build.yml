@@ -124,6 +124,11 @@ jobs:
         with:
           name: site
 
+      - name: Normalise committed line endings
+        # .gitattributes only applies to newly staged content, so blobs already committed as
+        # CRLF leave every checkout dirty and block the rebase. Self-healing no-op once clean.
+        run: git add --renormalize .
+
       - name: Commit and push generated site
         env:
           FILES: '*.html assets/badge_certifications.json'
