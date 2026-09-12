@@ -39,8 +39,16 @@ jobs:
           MAX_POSTS: '6'
         run: python3 tools/fetch_medium.py assets/medium_posts.json
 
+      - name: Normalise committed line endings
+        # .gitattributes only applies to newly staged content, so blobs already committed as
+        # CRLF leave every checkout dirty and block the rebase. Self-healing no-op once clean.
+        # .github is excluded: GITHUB_TOKEN has no `workflows` scope, so a renormalised
+        # workflow file in the commit makes the push fail with "remote rejected".
+        run: git add --renormalize -- . ':(exclude).github'
+
       - name: Commit and push medium_posts.json
         env:
           FILES: 'assets/medium_posts.json'
           COMMIT_MSG_TEMPLATE: 'chore: update medium posts [skip ci]'
-        run: bash .github/scripts/commit_and_push.sh
+        # Piped through sed so a CRLF checkout can't break the shebang/`set -euo pipefail`.
+        run: sed 's/\r$//' .github/scripts/commit_and_push.sh | bash
