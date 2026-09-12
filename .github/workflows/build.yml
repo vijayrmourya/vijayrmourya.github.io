@@ -129,4 +129,5 @@ jobs:
           FILES: '*.html assets/badge_certifications.json'
           COMMIT_MSG_TEMPLATE: 'chore: rebuild site ({COUNT} pages) [skip ci]'
           COUNT_CMD: "ls -1 *.html | wc -l"
-        run: bash .github/scripts/commit_and_push.sh
+        # Piped through sed so a CRLF checkout can't break the shebang/`set -euo pipefail`.
+        run: sed 's/\r$//' .github/scripts/commit_and_push.sh | bash
